@@ -1,2 +1,2 @@
 # Password-Manager
-A simple password manager made with Electron, React and TypeScript
+ Simple password manager made with Love, React, Typescript and Electronjs.

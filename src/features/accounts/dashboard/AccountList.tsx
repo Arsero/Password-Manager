@@ -27,8 +27,8 @@ export const AccountList: React.FC<IProps> = ({ showPassword, accounts }) => {
           </tr>
         </thead>
         <tbody>
-          {accounts.map(account => {
-            <tr>
+          {accounts.map(account => (
+            <tr key={account.id}>
               <td>{account.website}</td>
               <td>{account.email}</td>
               <td>{account.username}</td>
@@ -36,8 +36,8 @@ export const AccountList: React.FC<IProps> = ({ showPassword, accounts }) => {
               <td>{account.comment}</td>
               <td>Button</td>
               <td>Button</td>
-            </tr>;
-          })}
+            </tr>
+          ))}
         </tbody>
       </Table>
     </Container>

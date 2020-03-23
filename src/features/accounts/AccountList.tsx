@@ -1,17 +1,18 @@
 import React, { useEffect } from "react";
-import { Container, Table } from "react-bootstrap";
-import { IAccount } from "../../../app/models/account";
+import { Container, Table, Button, Image } from "react-bootstrap";
+import { IAccount } from "../../app/models/account";
 
 interface IProps {
   showPassword: boolean;
   accounts: IAccount[];
+  deleteAccount: (id: string) => void;
 }
 
-export const AccountList: React.FC<IProps> = ({ showPassword, accounts }) => {
-    useEffect(() => {
-        console.log(accounts);
-    }, []);
-
+export const AccountList: React.FC<IProps> = ({
+  showPassword,
+  accounts,
+  deleteAccount
+}) => {
   return (
     <Container style={{ paddingTop: "70px" }}>
       <Table responsive>
@@ -35,7 +36,13 @@ export const AccountList: React.FC<IProps> = ({ showPassword, accounts }) => {
               <td>{account.password}</td>
               <td>{account.comment}</td>
               <td>Button</td>
-              <td>Button</td>
+              <td>
+                <Button
+                    onClick={() => deleteAccount(account.id)}
+                    variant="warning">
+                        <Image src="./src/images/trash.png"/>
+                </Button>
+              </td>
             </tr>
           ))}
         </tbody>

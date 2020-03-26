@@ -29,3 +29,5 @@
 import './index.css';
 
 console.log('👋 This message is being logged by "renderer.js", included via webpack');
+console.log('Your App Path: ' +  app.getAppPath());
+console.log('dirname : ' + __dirname);

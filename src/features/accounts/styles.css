@@ -1,3 +1,8 @@
-td > * {
-    vertical-align : middle;
+td {
+    text-align: center;
+    /*margin: auto;*/
+}
+
+.btn.td-button {
+    padding: 3px 3px;
 }

@@ -1,7 +1,9 @@
 import React from "react";
 import { Container, Table, Button, Image } from "react-bootstrap";
 import { IAccount } from "../../app/models/account";
+// @ts-ignore
 import trashImage from "../../assets/images/trash.png";
+import './styles.css';
 
 interface IProps {
   showPassword: boolean;
@@ -20,7 +22,7 @@ export const AccountList: React.FC<IProps> = ({
         <thead>
           <tr>
             <th>Website</th>
-            <th>Email</th>
+            <th>Email address</th>
             <th>Username</th>
             <th>Password</th>
             <th>Comment</th>
@@ -38,10 +40,9 @@ export const AccountList: React.FC<IProps> = ({
               <td>{account.comment}</td>
               <td>Button</td>
               <td>
-                <Button
-                    onClick={() => deleteAccount(account.id)}
-                    variant="danger">
-                        <Image src={trashImage}/>
+                <Button variant="danger"  className='td-button'
+                    onClick={() => deleteAccount(account.id)}>
+                        <Image src={trashImage} width='25px' style={{paddingBottom: "2px"}}/>
                 </Button>
               </td>
             </tr>

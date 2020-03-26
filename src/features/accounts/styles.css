@@ -1,6 +1,5 @@
-td {
-    text-align: center;
-    /*margin: auto;*/
+.table td {
+    vertical-align: middle;
 }
 
 .btn.td-button {

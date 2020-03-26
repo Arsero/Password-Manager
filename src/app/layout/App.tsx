@@ -8,7 +8,7 @@ export const App = () => {
   const initialValues: IAccount[] = [
     {
       id: "1231",
-      website: "aaa.com",
+      website: "baaa.com",
       email: "aaa@gmail.com",
       username: "aaauser",
       password: "aaapassword",
@@ -16,7 +16,7 @@ export const App = () => {
     },
     {
       id: "123",
-      website: "aaa.com",
+      website: "caaa.com",
       email: "aaa@gmail.com",
       username: "aaauser",
       password: "aaapassword",
@@ -24,7 +24,7 @@ export const App = () => {
     },
     {
       id: "1232",
-      website: "aaa.com",
+      website: "daaa.com",
       email: "aaa@gmail.com",
       username: "aaauser",
       password: "aaapassword",
@@ -32,7 +32,7 @@ export const App = () => {
     },
     {
       id: "1233",
-      website: "aaa.com",
+      website: "eaaa.com",
       email: "aaa@gmail.com",
       username: "aaauser",
       password: "aaapassword",
@@ -40,7 +40,7 @@ export const App = () => {
     },
     {
       id: "1234",
-      website: "aaa.com",
+      website: "faaa.com",
       email: "aaa@gmail.com",
       username: "aaauser",
       password: "aaapassword",
@@ -48,7 +48,7 @@ export const App = () => {
     },
     {
       id: "1235",
-      website: "aaa.com",
+      website: "gaaa.com",
       email: "aaa@gmail.com",
       username: "aaauser",
       password: "aaapassword",
@@ -64,6 +64,7 @@ export const App = () => {
     }
   ];
 
+  initialValues.sort((a, b) => a.website < b.website ? -1 : 1);
   const [showPassword, setShowPassword] = useState<boolean>(true);
   const [accounts, setAccounts] = useState<IAccount[]>(initialValues);
 

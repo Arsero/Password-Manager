@@ -41,7 +41,7 @@ export const AccountList: React.FC<IProps> = ({
               <td>{account.comment}</td>
               <td>
                 <Button style={{marginRight: '15px'}}
-                  variant="info" title="Copy"
+                  variant="dark" title="Copy"
                   className="td-button">
                   <Image src={copyImage} />
                 </Button>

@@ -11,12 +11,14 @@ interface IProps {
   showPassword: boolean;
   accounts: IAccount[];
   deleteAccount: (id: string) => void;
+  copyPassword: (id: string) => void;
 }
 
 export const AccountList: React.FC<IProps> = ({
   showPassword,
   accounts,
-  deleteAccount
+  deleteAccount,
+  copyPassword
 }) => {
   return (
     <Container style={{ paddingTop: "70px" }}>
@@ -42,7 +44,8 @@ export const AccountList: React.FC<IProps> = ({
               <td>
                 <Button style={{marginRight: '15px'}}
                   variant="dark" title="Copy"
-                  className="td-button">
+                  className="td-button"
+                  onClick={() => copyPassword(account.id)} >
                   <Image src={copyImage} />
                 </Button>
                 <Button

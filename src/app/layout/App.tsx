@@ -64,18 +64,31 @@ export const App = () => {
     }
   ];
 
-  initialValues.sort((a, b) => a.website < b.website ? -1 : 1);
+  initialValues.sort((a, b) => (a.website < b.website ? -1 : 1));
   const [showPassword, setShowPassword] = useState<boolean>(true);
   const [accounts, setAccounts] = useState<IAccount[]>(initialValues);
 
   const handleDeleteAccount = (id: string) => {
-    setAccounts([...accounts.filter(a => a.id !== id)])
-  }
+    setAccounts([...accounts.filter(a => a.id !== id)]);
+  };
+
+  const handleCopyPassword = (id: string) => {
+    // Copy the password to the clipboard
+    let pwd = accounts.find(a => a.id === id).password;
+    if (pwd !== undefined) {
+      navigator.clipboard.writeText(pwd);
+    }
+  };
 
   return (
     <div>
       <NavBar />
-      <AccountList showPassword={showPassword} accounts={accounts} deleteAccount={handleDeleteAccount} />
+      <AccountList
+        showPassword={showPassword}
+        accounts={accounts}
+        deleteAccount={handleDeleteAccount}
+        copyPassword={handleCopyPassword}
+      />
     </div>
   );
 };

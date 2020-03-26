@@ -1,6 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Container, Table, Button, Image } from "react-bootstrap";
 import { IAccount } from "../../app/models/account";
+import trashImage from "../../assets/images/trash.png";
 
 interface IProps {
   showPassword: boolean;
@@ -39,8 +40,8 @@ export const AccountList: React.FC<IProps> = ({
               <td>
                 <Button
                     onClick={() => deleteAccount(account.id)}
-                    variant="warning">
-                        <Image src="./src/images/trash.png"/>
+                    variant="danger">
+                        <Image src={trashImage}/>
                 </Button>
               </td>
             </tr>

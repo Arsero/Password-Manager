@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "description": "A simple password manager",
   "main": ".webpack/main",
+  "types": "dist/index.d.ts",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
@@ -73,16 +74,18 @@
     "@types/react-redux": "^7.1.7",
     "css-loader": "^3.4.2",
     "electron": "8.1.1",
+    "file-loader": "^6.0.0",
     "node-loader": "^0.6.0",
     "redux-devtools": "^3.5.0",
-    "style-loader": "^0.23.1"
+    "style-loader": "^0.23.1",
+    "typescript": "^3.8.3"
   },
   "dependencies": {
     "@types/react": "^16.9.25",
     "@types/react-dom": "^16.9.5",
     "bootstrap": "^4.4.1",
     "electron-squirrel-startup": "^1.0.0",
-    "fork-ts-checker-webpack-plugin": "^4.1.0",
+    "fork-ts-checker-webpack-plugin": "^4.1.1",
     "prettier": "^2.0.1",
     "react": "^16.13.1",
     "react-bootstrap": "^1.0.0-beta.17",
@@ -91,11 +94,10 @@
     "react-router-dom": "^5.1.2",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
-    "ts-loader": "^6.2.1",
+    "ts-loader": "^6.2.2",
     "tslint": "^6.1.0",
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^9.0.0",
-    "tslint-react": "^4.2.0",
-    "typescript": "^3.8.3"
+    "tslint-react": "^4.2.0"
   }
 }

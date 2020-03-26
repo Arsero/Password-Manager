@@ -3,7 +3,9 @@ import { Container, Table, Button, Image } from "react-bootstrap";
 import { IAccount } from "../../app/models/account";
 // @ts-ignore
 import trashImage from "../../assets/images/trash.png";
-import './styles.css';
+// @ts-ignore
+import copyImage from "../../assets/images/copy.png";
+import "./styles.css";
 
 interface IProps {
   showPassword: boolean;
@@ -26,8 +28,7 @@ export const AccountList: React.FC<IProps> = ({
             <th>Username</th>
             <th>Password</th>
             <th>Comment</th>
-            <th>Copy</th>
-            <th>Delete</th>
+            <th>Copy / Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -38,11 +39,17 @@ export const AccountList: React.FC<IProps> = ({
               <td>{account.username}</td>
               <td>{account.password}</td>
               <td>{account.comment}</td>
-              <td>Button</td>
               <td>
-                <Button variant="danger"  className='td-button'
-                    onClick={() => deleteAccount(account.id)}>
-                        <Image src={trashImage} width='25px' style={{paddingBottom: "2px"}}/>
+                <Button style={{marginRight: '15px'}}
+                  variant="info" title="Copy"
+                  className="td-button">
+                  <Image src={copyImage} />
+                </Button>
+                <Button
+                  variant="danger" title="Delete"
+                  className="td-button"
+                  onClick={() => deleteAccount(account.id)}>
+                  <Image src={trashImage} />
                 </Button>
               </td>
             </tr>

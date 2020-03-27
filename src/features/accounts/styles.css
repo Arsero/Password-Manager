@@ -14,3 +14,7 @@
 img {
     width: 25px;
 }
+
+label.form-label {
+    font-weight: bold;
+}

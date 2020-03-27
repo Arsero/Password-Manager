@@ -33,7 +33,7 @@ const AccountForm: React.FC<IProps> = ({
 
   const [account, setAccount] = useState<IAccount>(initializeForm);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = event => {
     if (account.id.length === 0) {
       let newAccount = {
         ...account,
@@ -46,7 +46,7 @@ const AccountForm: React.FC<IProps> = ({
 
     event.preventDefault();
     const location = {
-      pathname: "/",
+      pathname: "/"
     };
     history.push(location);
   };
@@ -68,6 +68,7 @@ const AccountForm: React.FC<IProps> = ({
             name="website"
             placeholder="Enter a website"
             onChange={handleInputChange}
+            value={account.website}
           />
         </Form.Group>
         <Form.Group controlId="email">
@@ -77,6 +78,7 @@ const AccountForm: React.FC<IProps> = ({
             name="email"
             placeholder="name@example.com"
             onChange={handleInputChange}
+            value={account.email}
           />
         </Form.Group>
         <Form.Group controlId="username">
@@ -86,6 +88,7 @@ const AccountForm: React.FC<IProps> = ({
             name="username"
             placeholder="Enter a username"
             onChange={handleInputChange}
+            value={account.username}
           />
         </Form.Group>
         <Form.Group controlId="password">
@@ -95,6 +98,7 @@ const AccountForm: React.FC<IProps> = ({
             name="password"
             placeholder="Enter a password"
             onChange={handleInputChange}
+            value={account.password}
           />
         </Form.Group>
         <Form.Group controlId="comment">
@@ -105,6 +109,7 @@ const AccountForm: React.FC<IProps> = ({
             rows="3"
             placeholder="Any comment for your account ? Like a question."
             onChange={handleInputChange}
+            value={account.comment}
           />
         </Form.Group>
         <Button

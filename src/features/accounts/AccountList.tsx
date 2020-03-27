@@ -70,7 +70,7 @@ export const AccountList: React.FC<IProps> = ({
                         selectAccount(account.id);
                         const location = {
                           pathname: `/manage/${account.id}`
-                        }
+                        };
                         history.push(location);
                       }}
                     >

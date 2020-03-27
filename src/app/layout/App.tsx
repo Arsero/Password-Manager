@@ -69,13 +69,16 @@ export const App = () => {
   initialValues.sort((a, b) => (a.website < b.website ? -1 : 1));
   const [showPassword, setShowPassword] = useState<boolean>(true);
   const [accounts, setAccounts] = useState<IAccount[]>(initialValues);
+  const [selectedAccount, setSelectedAccount] = useState<IAccount>(null);
 
   const handleCreateAccount = (account: IAccount) => {
     setAccounts([...accounts, account]);
+    setSelectedAccount(null);
   };
 
   const handleEditAccount = (account: IAccount) => {
     setAccounts([...accounts.filter(a => a.id !== account.id), account]);
+    setSelectedAccount(null);
   };
 
   const handleDeleteAccount = (id: string) => {
@@ -90,9 +93,13 @@ export const App = () => {
     }
   };
 
+  const handleSelectAccount = (id: string) => {
+    setSelectedAccount(accounts.filter(a => a.id === id)[0]);
+  };
+
   return (
     <div>
-      <NavBar  />
+      <NavBar />
       <Route
         exact
         path="/"
@@ -102,6 +109,7 @@ export const App = () => {
             accounts={accounts}
             deleteAccount={handleDeleteAccount}
             copyPassword={handleCopyPassword}
+            selectAccount={handleSelectAccount}
           />
         )}
       />
@@ -112,7 +120,7 @@ export const App = () => {
           <AccountForm
             createAccount={handleCreateAccount}
             editAccount={handleEditAccount}
-            account={null}
+            account={selectedAccount}
           />
         )}
       />

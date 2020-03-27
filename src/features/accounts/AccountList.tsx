@@ -21,7 +21,7 @@ export const AccountList: React.FC<IProps> = ({
   copyPassword
 }) => {
   return (
-    <Container style={{ paddingTop: "70px" }}>
+    <Container style={{ marginTop: "5em" }}>
       <Table responsive>
         <thead>
           <tr>
@@ -43,23 +43,23 @@ export const AccountList: React.FC<IProps> = ({
               <td>{account.comment}</td>
               <td style={{ textAlign: "center" }}>
                 <ButtonGroup>
-                <Button
-                  style={{ marginRight: "15px" }}
-                  variant="dark"
-                  title="Copy"
-                  className="td-button"
-                  onClick={() => copyPassword(account.id)}
-                >
-                  <Image src={copyImage} />
-                </Button>
-                <Button
-                  variant="danger"
-                  title="Delete"
-                  className="td-button"
-                  onClick={() => deleteAccount(account.id)}
-                >
-                  <Image src={trashImage} />
-                </Button>
+                  <Button
+                    style={{ marginRight: "15px" }}
+                    variant="dark"
+                    title="Copy"
+                    className="td-button"
+                    onClick={() => copyPassword(account.id)}
+                  >
+                    <Image src={copyImage} />
+                  </Button>
+                  <Button
+                    variant="danger"
+                    title="Delete"
+                    className="td-button"
+                    onClick={() => deleteAccount(account.id)}
+                  >
+                    <Image src={trashImage} />
+                  </Button>
                 </ButtonGroup>
               </td>
             </tr>

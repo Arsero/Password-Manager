@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Table, Button, Image } from "react-bootstrap";
+import { Container, Table, Button, Image, ButtonGroup } from "react-bootstrap";
 import { IAccount } from "../../app/models/account";
 // @ts-ignore
 import trashImage from "../../assets/images/trash.png";
@@ -39,9 +39,10 @@ export const AccountList: React.FC<IProps> = ({
               <td>{account.website}</td>
               <td>{account.email}</td>
               <td>{account.username}</td>
-              <td>{account.password}</td>
+              <td>***********</td>
               <td>{account.comment}</td>
               <td style={{ textAlign: "center" }}>
+                <ButtonGroup>
                 <Button
                   style={{ marginRight: "15px" }}
                   variant="dark"
@@ -59,6 +60,7 @@ export const AccountList: React.FC<IProps> = ({
                 >
                   <Image src={trashImage} />
                 </Button>
+                </ButtonGroup>
               </td>
             </tr>
           ))}

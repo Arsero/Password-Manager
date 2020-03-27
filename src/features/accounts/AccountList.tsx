@@ -62,7 +62,7 @@ export const AccountList: React.FC<IProps> = ({
                       <Image src={copyImage} />
                     </Button>
                     <Button
-                      variant="primary"
+                      variant="dark"
                       style={{ marginRight: "15px" }}
                       title="Edit"
                       className="td-button"

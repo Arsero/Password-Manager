@@ -1,10 +1,9 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AccountList } from "../../features/accounts/AccountList";
 import { NavBar } from "../../features/nav/NavBar";
 import { IAccount } from "../models/account";
-import { Route, Switch } from "react-router-dom";
-import { Container } from "react-bootstrap";
+import { Route } from "react-router-dom";
 import AccountForm from "../../features/accounts/AccountForm";
 
 export const App = () => {
@@ -73,12 +72,10 @@ export const App = () => {
 
   const handleCreateAccount = (account: IAccount) => {
     setAccounts([...accounts, account]);
-    accounts.sort((a, b) => (a.website < b.website ? -1 : 1));
   };
 
   const handleEditAccount = (account: IAccount) => {
     setAccounts([...accounts.filter(a => a.id !== account.id), account]);
-    accounts.sort((a, b) => (a.website < b.website ? -1 : 1));
   };
 
   const handleDeleteAccount = (id: string) => {

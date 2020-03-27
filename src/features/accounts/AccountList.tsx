@@ -34,7 +34,7 @@ export const AccountList: React.FC<IProps> = ({
           </tr>
         </thead>
         <tbody>
-          {accounts.map(account => (
+          {accounts.sort((a, b) => (a.website < b.website ? -1 : 1)).map(account => (
             <tr key={account.id}>
               <td>{account.website}</td>
               <td>{account.email}</td>

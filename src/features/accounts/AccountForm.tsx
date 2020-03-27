@@ -3,6 +3,7 @@ import { Form, Container, Button, ButtonGroup } from "react-bootstrap";
 import "./styles.css";
 import { IAccount } from "../../app/models/account";
 import { v4 as uuid } from "uuid";
+import { useHistory } from "react-router-dom";
 
 interface IProps {
   account: IAccount;
@@ -15,6 +16,7 @@ const AccountForm: React.FC<IProps> = ({
   createAccount,
   editAccount
 }) => {
+  const history = useHistory();
   const initializeForm = () => {
     if (initialFormState) return initialFormState;
     else {
@@ -31,7 +33,7 @@ const AccountForm: React.FC<IProps> = ({
 
   const [account, setAccount] = useState<IAccount>(initializeForm);
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
     if (account.id.length === 0) {
       let newAccount = {
         ...account,
@@ -41,6 +43,12 @@ const AccountForm: React.FC<IProps> = ({
     } else {
       editAccount(account);
     }
+
+    event.preventDefault();
+    const location = {
+      pathname: "/",
+    };
+    history.push(location);
   };
 
   const handleInputChange = (
@@ -107,7 +115,17 @@ const AccountForm: React.FC<IProps> = ({
         >
           Submit
         </Button>
-        <Button variant="danger" type="button" block>
+        <Button
+          variant="danger"
+          type="button"
+          onClick={() => {
+            const location = {
+              pathname: "/"
+            };
+            history.push(location);
+          }}
+          block
+        >
           Cancel
         </Button>
       </Form>

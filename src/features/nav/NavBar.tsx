@@ -12,14 +12,12 @@ export const NavBar = () => {
   return (
     <Navbar bg="dark" variant="dark" fixed="top">
       <Container>
-        <Navbar.Brand href="">Password Manager</Navbar.Brand>
+        <Navbar.Brand href="/">Password Manager</Navbar.Brand>
         <Button variant="warning"
           onClick={() => {
             const location = {
-              pathname: '/createAccount',
-              state: {}
+              pathname: '/createAccount'
             }
-
             history.push(location);
           }}>
           <b>Add an account</b>

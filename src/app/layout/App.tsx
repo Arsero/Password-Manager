@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AccountList } from "../../features/accounts/AccountList";
 import { NavBar } from "../../features/nav/NavBar";
 import { IAccount } from "../models/account";
+import { Route, Switch } from "react-router-dom";
+import { Container } from "react-bootstrap";
+import AccountForm from "../../features/accounts/AccountForm";
 
 export const App = () => {
   const initialValues: IAccount[] = [
@@ -68,6 +71,16 @@ export const App = () => {
   const [showPassword, setShowPassword] = useState<boolean>(true);
   const [accounts, setAccounts] = useState<IAccount[]>(initialValues);
 
+  const handleCreateAccount = (account: IAccount) => {
+    setAccounts([...accounts, account]);
+    accounts.sort((a, b) => (a.website < b.website ? -1 : 1));
+  };
+
+  const handleEditAccount = (account: IAccount) => {
+    setAccounts([...accounts.filter(a => a.id !== account.id), account]);
+    accounts.sort((a, b) => (a.website < b.website ? -1 : 1));
+  };
+
   const handleDeleteAccount = (id: string) => {
     setAccounts([...accounts.filter(a => a.id !== id)]);
   };
@@ -82,12 +95,29 @@ export const App = () => {
 
   return (
     <div>
-      <NavBar />
-      <AccountList
-        showPassword={showPassword}
-        accounts={accounts}
-        deleteAccount={handleDeleteAccount}
-        copyPassword={handleCopyPassword}
+      <NavBar  />
+      <Route
+        exact
+        path="/"
+        render={() => (
+          <AccountList
+            showPassword={showPassword}
+            accounts={accounts}
+            deleteAccount={handleDeleteAccount}
+            copyPassword={handleCopyPassword}
+          />
+        )}
+      />
+
+      <Route
+        path={["/createAccount", "/manage/:id"]}
+        render={() => (
+          <AccountForm
+            createAccount={handleCreateAccount}
+            editAccount={handleEditAccount}
+            account={null}
+          />
+        )}
       />
     </div>
   );

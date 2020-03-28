@@ -73,12 +73,10 @@ export const App = () => {
 
   const handleCreateAccount = (account: IAccount) => {
     setAccounts([...accounts, account]);
-    setSelectedAccount(null);
   };
 
   const handleEditAccount = (account: IAccount) => {
     setAccounts([...accounts.filter(a => a.id !== account.id), account]);
-    setSelectedAccount(null);
   };
 
   const handleDeleteAccount = (id: string) => {
@@ -121,6 +119,7 @@ export const App = () => {
             createAccount={handleCreateAccount}
             editAccount={handleEditAccount}
             account={selectedAccount}
+            setSelectedAccount={setSelectedAccount}
           />
         )}
       />

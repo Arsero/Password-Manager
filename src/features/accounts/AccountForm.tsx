@@ -9,12 +9,14 @@ interface IProps {
   account: IAccount;
   createAccount: (account: IAccount) => void;
   editAccount: (account: IAccount) => void;
+  setSelectedAccount: (account: IAccount | null) => void;
 }
 
 const AccountForm: React.FC<IProps> = ({
   account: initialFormState,
   createAccount,
-  editAccount
+  editAccount,
+  setSelectedAccount
 }) => {
   const history = useHistory();
   const initializeForm = () => {
@@ -40,9 +42,12 @@ const AccountForm: React.FC<IProps> = ({
         id: uuid()
       };
       createAccount(newAccount);
-    } else {
+    } 
+    else {
       editAccount(account);
     }
+
+    setSelectedAccount(null);
 
     event.preventDefault();
     const location = {
@@ -123,13 +128,15 @@ const AccountForm: React.FC<IProps> = ({
         <Button
           variant="danger"
           type="button"
+          block
           onClick={() => {
+            setSelectedAccount(null);
+
             const location = {
               pathname: "/"
             };
             history.push(location);
           }}
-          block
         >
           Cancel
         </Button>

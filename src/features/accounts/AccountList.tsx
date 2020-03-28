@@ -37,7 +37,7 @@ export const AccountList: React.FC<IProps> = ({
             <th>Username</th>
             <th>Password</th>
             <th>Comment</th>
-            <th style={{ textAlign: "center" }}>Copy / Delete</th>
+            <th style={{ textAlign: "center" }}>Actions</th>
           </tr>
         </thead>
         <tbody>

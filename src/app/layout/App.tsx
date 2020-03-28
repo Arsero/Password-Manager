@@ -73,22 +73,16 @@ export const App = () => {
   const [accounts, setAccounts] = useState<IAccount[]>(initialValues);
   const [selectedAccount, setSelectedAccount] = useState<IAccount>(null);
   const [firstFlag, setfirstFlag] = useState<Boolean>(false);
+  const pathFile = path.join(remote.app.getPath("desktop"), "/accounts.txt");
 
-  const savePasswords = (data) => {
-    const pathFile = path.join(
-      remote.app.getPath("appData"),
-      "/password-manager/accounts.txt"
-    );
-
+  const saveData = (path, data) => {
     const jsonData = JSON.stringify(data);
-    fs.writeFile(pathFile, jsonData, err => {
-      if (err) {
-        console.log(err);
-      }
-      console.log('AAAAAAAAAAAAAAA');
-      
-    });
-    console.log("Data saved !");
+    try {
+      fs.writeFileSync(path, jsonData, "utf-8");
+      console.log("Saved !");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleCreateAccount = (account: IAccount) => {
@@ -116,13 +110,10 @@ export const App = () => {
   };
 
   useEffect(() => {
-    if(firstFlag) {
+    if (firstFlag) {
       console.log(accounts);
-      savePasswords(accounts);
-    }
-    else {
-      setfirstFlag(true);
-    }
+      saveData(pathFile, accounts);
+    } else setfirstFlag(true);
   }, [accounts]);
 
   return (

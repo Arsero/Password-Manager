@@ -70,7 +70,6 @@ export const App = () => {
   ];
 
   initialValues.sort((a, b) => (a.website < b.website ? -1 : 1));
-  const [showPassword, setShowPassword] = useState<boolean>(true);
   const [accounts, setAccounts] = useState<IAccount[]>(initialValues);
   const [selectedAccount, setSelectedAccount] = useState<IAccount>(null);
 
@@ -131,7 +130,6 @@ export const App = () => {
         path="/"
         render={() => (
           <AccountList
-            showPassword={showPassword}
             accounts={accounts}
             deleteAccount={handleDeleteAccount}
             copyPassword={handleCopyPassword}

@@ -11,7 +11,6 @@ import editImage from "../../assets/images/edit.png";
 import "./styles.css";
 
 interface IProps {
-  showPassword: boolean;
   accounts: IAccount[];
   deleteAccount: (id: string) => void;
   copyPassword: (id: string) => void;
@@ -19,7 +18,6 @@ interface IProps {
 }
 
 export const AccountList: React.FC<IProps> = ({
-  showPassword,
   selectAccount,
   accounts,
   deleteAccount,

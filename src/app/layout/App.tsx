@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AccountList } from "../../features/accounts/AccountList";
 import { NavBar } from "../../features/nav/NavBar";
 import { IAccount } from "../models/account";
 import { Route } from "react-router-dom";
 import AccountForm from "../../features/accounts/AccountForm";
+import path from "path";
+import { remote } from "electron";
+import fs from "fs";
 
 export const App = () => {
   const initialValues: IAccount[] = [
@@ -71,6 +74,24 @@ export const App = () => {
   const [accounts, setAccounts] = useState<IAccount[]>(initialValues);
   const [selectedAccount, setSelectedAccount] = useState<IAccount>(null);
 
+  const savePasswords = () => {
+    const pathFile = path.join(
+      remote.app.getPath("appData"),
+      "/password-manager/user.txt"
+    );
+
+    if (fs.existsSync(pathFile)) {
+      fs.unlinkSync(pathFile);
+    }
+
+    var jsonData = JSON.stringify(accounts);
+    fs.writeFile(pathFile, jsonData, err => {
+      if (err) {
+        console.log(err);
+      }
+    });
+  };
+
   const handleCreateAccount = (account: IAccount) => {
     setAccounts([...accounts, account]);
   };
@@ -94,6 +115,13 @@ export const App = () => {
   const handleSelectAccount = (id: string) => {
     setSelectedAccount(accounts.filter(a => a.id === id)[0]);
   };
+
+  useEffect(() => {
+    return () => {
+      //savePasswords();
+      console.log(accounts);
+    };
+  }, [accounts]);
 
   return (
     <div>

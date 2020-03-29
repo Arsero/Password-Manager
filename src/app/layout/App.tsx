@@ -7,7 +7,7 @@ import { Route } from "react-router-dom";
 import AccountForm from "../../features/accounts/AccountForm";
 import path from "path";
 import { remote } from "electron";
-import { saveData, loadData } from "../../utils/fileUtils";
+import { saveData, loadData, exists } from "../../utils/fileUtils";
 import { Login } from "../../features/login/Login";
 
 export const App = () => {
@@ -15,6 +15,8 @@ export const App = () => {
   const [accounts, setAccounts] = useState<IAccount[]>([]);
   const [selectedAccount, setSelectedAccount] = useState<IAccount>(null);
   const [isLogged, setisLogged] = useState<boolean>(false);
+  const [password, setPassword] = useState<string>("");
+  const [isRegister, setisRegister] = useState<boolean>(false);
 
   const pathFile = path.join(remote.app.getPath("desktop"), "/accounts.txt");
 
@@ -42,21 +44,29 @@ export const App = () => {
     setSelectedAccount(accounts.filter(a => a.id === id)[0]);
   };
 
-  const loadAccounts = (password: string) => {
+  const loadAccounts = (pwd: string) => {
     try {
-      if (password === "aaa") {
+      if (pwd === "aaa") {
         let data = loadData(pathFile);
         // decrypt with hashpassword
         let accountsFromFile = JSON.parse(data);
         setAccounts(accountsFromFile);
-        setisLogged(true);
+
+        setPassword(pwd);
         return true;
-      } else return false;
+      } else {
+        return false;
+      }
     } catch (error) {
       console.log(error);
       return false;
     }
   };
+
+  useEffect(() => {
+    // check if file exist to store a password
+    setisRegister(exists(pathFile));
+  }, [])
 
   useEffect(() => {
     if (isLogged) {
@@ -78,7 +88,7 @@ export const App = () => {
         render={() => (
           <div>
             <NavBar isLogged={isLogged} />
-            <Login checkPassword={loadAccounts} />
+            <Login checkPassword={loadAccounts} isRegister={isRegister} setisLogged={setisLogged} />
           </div>
         )}
       />

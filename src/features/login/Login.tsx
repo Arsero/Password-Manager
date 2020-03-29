@@ -5,9 +5,11 @@ import { useHistory } from "react-router-dom";
 
 interface IProps {
   checkPassword: (password) => boolean;
+  isRegister: boolean;
+  setisLogged: (logged: boolean) => void;
 }
 
-export const Login: React.FC<IProps> = ({ checkPassword }) => {
+export const Login: React.FC<IProps> = ({ checkPassword, isRegister, setisLogged }) => {
   const [password, setPassword] = useState("");
   const [isFalsePassword, setisFalsePassword] = useState(false);
   const history = useHistory();
@@ -16,48 +18,95 @@ export const Login: React.FC<IProps> = ({ checkPassword }) => {
     setPassword(event.currentTarget.value);
   };
 
-  const handleSubmit = event => {
+  const handleSubmitLogin = event => {
     // check if file exist !
     // load crypted file, if no error loggedin
     event.preventDefault(); // fix warning form cancelled
-
-    if (checkPassword(password)) {
-      console.log("Connected");
-
-      const location = {
-        pathname: "/accounts"
-      };
-      history.push(location);
-    } else {
+      if (checkPassword(password)) {
+        console.log("Connected");
+        setisLogged(true);
+        const location = {
+          pathname: "/accounts"
+        };
+        history.push(location);
+      } else {
         setisFalsePassword(true);
+      }
+  };
+
+  const handleSubmitRegister = event => {
+    event.preventDefault(); // fix warning form cancelled
+    if (password.length > 0) {
+        setisLogged(true);
+
+        const location = {
+          pathname: "/accounts"
+        };
+        history.push(location);
+    } else {
+      setisFalsePassword(true);
     }
   };
 
   return (
     <Container>
-      <Form onSubmit={handleSubmit} className="form-center">
-        <Form.Group controlId="password">
-          <Form.Label>Login</Form.Label>
-          <Form.Control
-            type="password"
-            placeholder="Enter your password"
-            onChange={handleInputChange}
-            value={password}
-          />
-          {isFalsePassword && (
-            <Alert variant="danger" style={{marginTop:'10px', marginBottom: '10px'}}>
-              <b>The password is incorrect !</b>
-            </Alert>
-          )}
-        </Form.Group>
-        <Button
-          type="submit"
-          variant="dark"
-          style={{ margin: "25px auto", width: "200px" }}
-        >
-          Login
-        </Button>
-      </Form>
+      {isRegister && (
+        <Form onSubmit={handleSubmitLogin} className="form-center">
+          <Form.Group controlId="password">
+            <Form.Label>Login</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Enter your password"
+              onChange={handleInputChange}
+              value={password}
+            />
+            {isFalsePassword && (
+              <Alert
+                variant="danger"
+                style={{ marginTop: "10px", marginBottom: "10px" }}
+              >
+                <b>The password is incorrect !</b>
+              </Alert>
+            )}
+          </Form.Group>
+          <Button
+            type="submit"
+            variant="dark"
+            style={{ margin: "25px auto", width: "200px" }}
+          >
+            Login
+          </Button>
+        </Form>
+      )}
+
+      {!isRegister && (
+        <Form onSubmit={handleSubmitRegister} className="form-center">
+          <Form.Group controlId="password">
+            <Form.Label>Register</Form.Label>
+            <Form.Control
+              type="password"
+              placeholder="Enter your password"
+              onChange={handleInputChange}
+              value={password}
+            />
+            {isFalsePassword && (
+              <Alert
+                variant="danger"
+                style={{ marginTop: "10px", marginBottom: "10px" }}
+              >
+                <b>The password can't be empty !</b>
+              </Alert>
+            )}
+          </Form.Group>
+          <Button
+            type="submit"
+            variant="dark"
+            style={{ margin: "25px auto", width: "200px" }}
+          >
+            Register
+          </Button>
+        </Form>
+      )}
     </Container>
   );
 };

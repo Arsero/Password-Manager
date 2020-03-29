@@ -7,8 +7,9 @@ import { Route } from "react-router-dom";
 import AccountForm from "../../features/accounts/AccountForm";
 import path from "path";
 import { remote } from "electron";
-import fileUtils from "../../utils/fileUtils";
+import fileUtils from "../../utils/FileUtils";
 import { Login } from "../../features/login/Login";
+import CryptUtils from "../../utils/cryptUtils";
 
 export const App = () => {
   //initialValues.sort((a, b) => (a.website < b.website ? -1 : 1));
@@ -18,7 +19,7 @@ export const App = () => {
   const [password, setPassword] = useState<string>("");
   const [isRegister, setisRegister] = useState<boolean>(false);
 
-  const pathFile = path.join(remote.app.getPath("desktop"), "/accounts.txt");
+  const pathFile = path.join(remote.app.getPath("appData"), "/accounts.txt");
 
   const handleCreateAccount = (account: IAccount) => {
     setAccounts([...accounts, account]);
@@ -46,18 +47,14 @@ export const App = () => {
 
   const loadAccounts = (pwd: string) => {
     try {
-      if (pwd === "aaa") {
-        let data = fileUtils.loadData(pathFile);
-        // decrypt with hashpassword
-        // if exception -> corrupted file
-        let accountsFromFile = JSON.parse(data);
-        setAccounts(accountsFromFile);
+      let data = fileUtils.loadData(pathFile);
+      const decryptedData = CryptUtils.decrypt(data, CryptUtils.hash(pwd));
+      // if exception -> corrupted file or password false
+      let accountsFromFile = JSON.parse(decryptedData);
 
-        setPassword(pwd);
-        return true;
-      } else {
-        return false;
-      }
+      setAccounts(accountsFromFile);
+      setPassword(pwd);
+      return true;
     } catch (error) {
       console.log(error);
       return false;
@@ -69,21 +66,24 @@ export const App = () => {
       setPassword(pwd);
       return true;
     }
-
     return false;
   };
 
   useEffect(() => {
-    // check if file exist to store a password
+    // check if file exist to register
     setisRegister(fileUtils.exists(pathFile));
   }, []);
 
   useEffect(() => {
     if (isLogged) {
       try {
-        console.log(accounts);
         //crypt with hashpassword
-        fileUtils.saveData(pathFile, accounts);
+        const cryptedAccounts = CryptUtils.encrypt(
+          JSON.stringify(accounts),
+          CryptUtils.hash(password)
+        );
+        
+        fileUtils.saveData(pathFile, cryptedAccounts.toString());
       } catch (error) {
         console.log(error);
       }

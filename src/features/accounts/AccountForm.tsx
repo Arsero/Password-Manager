@@ -28,7 +28,7 @@ const AccountForm: React.FC<IProps> = ({
         email: "",
         username: "",
         password: "",
-        comment: ""
+        comment: "None"
       };
     }
   };

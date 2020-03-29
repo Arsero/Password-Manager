@@ -25,8 +25,6 @@ export const Login: React.FC<IProps> = ({
   };
 
   const handleSubmitLogin = event => {
-    // check if file exist !
-    // load crypted file, if no error loggedin
     event.preventDefault(); // fix warning form cancelled
     if (checkPassword(password)) {
       console.log("Connected");

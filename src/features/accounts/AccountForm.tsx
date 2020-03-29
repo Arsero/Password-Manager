@@ -51,7 +51,7 @@ const AccountForm: React.FC<IProps> = ({
 
     event.preventDefault();
     const location = {
-      pathname: "/"
+      pathname: "/accounts"
     };
     history.push(location);
   };
@@ -133,7 +133,7 @@ const AccountForm: React.FC<IProps> = ({
             setSelectedAccount(null);
 
             const location = {
-              pathname: "/"
+              pathname: "/accounts"
             };
             history.push(location);
           }}

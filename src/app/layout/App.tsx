@@ -7,7 +7,7 @@ import { Route } from "react-router-dom";
 import AccountForm from "../../features/accounts/AccountForm";
 import path from "path";
 import { remote } from "electron";
-import fs from "fs";
+import {saveData} from "../../utils/fileUtils";
 
 export const App = () => {
   const initialValues: IAccount[] = [
@@ -74,16 +74,6 @@ export const App = () => {
   const [selectedAccount, setSelectedAccount] = useState<IAccount>(null);
   const [firstFlag, setfirstFlag] = useState<Boolean>(false);
   const pathFile = path.join(remote.app.getPath("desktop"), "/accounts.txt");
-
-  const saveData = (path, data) => {
-    const jsonData = JSON.stringify(data);
-    try {
-      fs.writeFileSync(path, jsonData, "utf-8");
-      console.log("Saved !");
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const handleCreateAccount = (account: IAccount) => {
     setAccounts([...accounts, account]);

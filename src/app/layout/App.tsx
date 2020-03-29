@@ -7,7 +7,7 @@ import { Route } from "react-router-dom";
 import AccountForm from "../../features/accounts/AccountForm";
 import path from "path";
 import { remote } from "electron";
-import { saveData, loadData, exists } from "../../utils/fileUtils";
+import fileUtils from "../../utils/fileUtils";
 import { Login } from "../../features/login/Login";
 
 export const App = () => {
@@ -47,7 +47,7 @@ export const App = () => {
   const loadAccounts = (pwd: string) => {
     try {
       if (pwd === "aaa") {
-        let data = loadData(pathFile);
+        let data = fileUtils.loadData(pathFile);
         // decrypt with hashpassword
         // if exception -> corrupted file
         let accountsFromFile = JSON.parse(data);
@@ -75,7 +75,7 @@ export const App = () => {
 
   useEffect(() => {
     // check if file exist to store a password
-    setisRegister(exists(pathFile));
+    setisRegister(fileUtils.exists(pathFile));
   }, []);
 
   useEffect(() => {
@@ -83,7 +83,7 @@ export const App = () => {
       try {
         console.log(accounts);
         //crypt with hashpassword
-        saveData(pathFile, accounts);
+        fileUtils.saveData(pathFile, accounts);
       } catch (error) {
         console.log(error);
       }

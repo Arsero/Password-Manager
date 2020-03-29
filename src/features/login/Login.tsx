@@ -7,9 +7,15 @@ interface IProps {
   checkPassword: (password) => boolean;
   isRegister: boolean;
   setisLogged: (logged: boolean) => void;
+  registerPassword: (pwd: string) => boolean;
 }
 
-export const Login: React.FC<IProps> = ({ checkPassword, isRegister, setisLogged }) => {
+export const Login: React.FC<IProps> = ({
+  checkPassword,
+  isRegister,
+  setisLogged,
+  registerPassword
+}) => {
   const [password, setPassword] = useState("");
   const [isFalsePassword, setisFalsePassword] = useState(false);
   const history = useHistory();
@@ -22,27 +28,27 @@ export const Login: React.FC<IProps> = ({ checkPassword, isRegister, setisLogged
     // check if file exist !
     // load crypted file, if no error loggedin
     event.preventDefault(); // fix warning form cancelled
-      if (checkPassword(password)) {
-        console.log("Connected");
-        setisLogged(true);
-        const location = {
-          pathname: "/accounts"
-        };
-        history.push(location);
-      } else {
-        setisFalsePassword(true);
-      }
+    if (checkPassword(password)) {
+      console.log("Connected");
+      setisLogged(true);
+      const location = {
+        pathname: "/accounts"
+      };
+      history.push(location);
+    } else {
+      setisFalsePassword(true);
+    }
   };
 
   const handleSubmitRegister = event => {
     event.preventDefault(); // fix warning form cancelled
-    if (password.length > 0) {
-        setisLogged(true);
+    if (registerPassword(password)) {
+      setisLogged(true);
 
-        const location = {
-          pathname: "/accounts"
-        };
-        history.push(location);
+      const location = {
+        pathname: "/accounts"
+      };
+      history.push(location);
     } else {
       setisFalsePassword(true);
     }

@@ -49,6 +49,7 @@ export const App = () => {
       if (pwd === "aaa") {
         let data = loadData(pathFile);
         // decrypt with hashpassword
+        // if exception -> corrupted file
         let accountsFromFile = JSON.parse(data);
         setAccounts(accountsFromFile);
 
@@ -63,10 +64,19 @@ export const App = () => {
     }
   };
 
+  const registerPassword = (pwd: string) => {
+    if (pwd.length > 0) {
+      setPassword(pwd);
+      return true;
+    }
+
+    return false;
+  };
+
   useEffect(() => {
     // check if file exist to store a password
     setisRegister(exists(pathFile));
-  }, [])
+  }, []);
 
   useEffect(() => {
     if (isLogged) {
@@ -88,7 +98,12 @@ export const App = () => {
         render={() => (
           <div>
             <NavBar isLogged={isLogged} />
-            <Login checkPassword={loadAccounts} isRegister={isRegister} setisLogged={setisLogged} />
+            <Login
+              checkPassword={loadAccounts}
+              isRegister={isRegister}
+              setisLogged={setisLogged}
+              registerPassword={registerPassword}
+            />
           </div>
         )}
       />

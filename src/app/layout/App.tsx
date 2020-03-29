@@ -7,72 +7,13 @@ import { Route } from "react-router-dom";
 import AccountForm from "../../features/accounts/AccountForm";
 import path from "path";
 import { remote } from "electron";
-import {saveData} from "../../utils/fileUtils";
+import { saveData, loadData } from "../../utils/fileUtils";
 
 export const App = () => {
-  const initialValues: IAccount[] = [
-    {
-      id: "1231",
-      website: "baaa.com",
-      email: "aaa@gmail.com",
-      username: "aaauser",
-      password: "aaapassword",
-      comment: "cool"
-    },
-    {
-      id: "123",
-      website: "caaa.com",
-      email: "aaa@gmail.com",
-      username: "aaauser",
-      password: "aaapassword",
-      comment: "cool"
-    },
-    {
-      id: "1232",
-      website: "daaa.com",
-      email: "aaa@gmail.com",
-      username: "aaauser",
-      password: "aaapassword",
-      comment: "cool"
-    },
-    {
-      id: "1233",
-      website: "eaaa.com",
-      email: "aaa@gmail.com",
-      username: "aaauser",
-      password: "aaapassword",
-      comment: "cool"
-    },
-    {
-      id: "1234",
-      website: "faaa.com",
-      email: "aaa@gmail.com",
-      username: "aaauser",
-      password: "aaapassword",
-      comment: "cool"
-    },
-    {
-      id: "1235",
-      website: "gaaa.com",
-      email: "aaa@gmail.com",
-      username: "aaauser",
-      password: "aaapassword",
-      comment: "cool"
-    },
-    {
-      id: "1236",
-      website: "aaa.com",
-      email: "aaa@gmail.com",
-      username: "aaauser",
-      password: "aaapassword",
-      comment: "cool"
-    }
-  ];
-
-  initialValues.sort((a, b) => (a.website < b.website ? -1 : 1));
-  const [accounts, setAccounts] = useState<IAccount[]>(initialValues);
+  //initialValues.sort((a, b) => (a.website < b.website ? -1 : 1));
+  const [accounts, setAccounts] = useState<IAccount[]>([]);
   const [selectedAccount, setSelectedAccount] = useState<IAccount>(null);
-  const [firstFlag, setfirstFlag] = useState<Boolean>(false);
+  const [isloaded, setisLoaded] = useState<boolean>(false);
   const pathFile = path.join(remote.app.getPath("desktop"), "/accounts.txt");
 
   const handleCreateAccount = (account: IAccount) => {
@@ -100,10 +41,26 @@ export const App = () => {
   };
 
   useEffect(() => {
-    if (firstFlag) {
-      console.log(accounts);
-      saveData(pathFile, accounts);
-    } else setfirstFlag(true);
+    if (isloaded) {
+      try {
+        console.log(accounts);
+        //crypt with hashpassword
+        saveData(pathFile, accounts);
+      } catch (error) {
+        console.log(error);
+      }
+    } else {
+      try {
+        let data = loadData(pathFile);
+        // decrypt with hashpassword
+        let accountsFromFile = JSON.parse(data);
+        setAccounts(accountsFromFile);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setisLoaded(true);
+      }
+    }
   }, [accounts]);
 
   return (

@@ -2,10 +2,12 @@ import fs from "fs";
 
 export const saveData = (path, data) => {
   const jsonData = JSON.stringify(data);
-  try {
-    fs.writeFileSync(path, jsonData, "utf-8");
-    console.log("Saved !");
-  } catch (error) {
-    console.log(error);
-  }
+  fs.writeFileSync(path, jsonData, "utf-8");
+  console.log(path + " saved !");
+};
+
+export const loadData = path => {
+  let data = fs.readFileSync(path, "utf-8");
+  console.log(path + " loaded !");
+  return data;
 };

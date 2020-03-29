@@ -92,49 +92,41 @@ export const App = () => {
 
   return (
     <div>
+      <NavBar isLogged={isLogged} />
       <Route
         exact
         path="/"
         render={() => (
-          <div>
-            <NavBar isLogged={isLogged} />
-            <Login
-              checkPassword={loadAccounts}
-              isRegister={isRegister}
-              setisLogged={setisLogged}
-              registerPassword={registerPassword}
-            />
-          </div>
+          <Login
+            checkPassword={loadAccounts}
+            isRegister={isRegister}
+            setisLogged={setisLogged}
+            registerPassword={registerPassword}
+          />
         )}
       />
 
       <Route
         path="/accounts"
         render={() => (
-          <div>
-            <NavBar isLogged={isLogged} />
-            <AccountList
-              accounts={accounts}
-              deleteAccount={handleDeleteAccount}
-              copyPassword={handleCopyPassword}
-              selectAccount={handleSelectAccount}
-            />
-          </div>
+          <AccountList
+            accounts={accounts}
+            deleteAccount={handleDeleteAccount}
+            copyPassword={handleCopyPassword}
+            selectAccount={handleSelectAccount}
+          />
         )}
       />
 
       <Route
         path={["/createAccount", "/manage/:id"]}
         render={() => (
-          <div>
-            <NavBar isLogged={isLogged} />
-            <AccountForm
-              createAccount={handleCreateAccount}
-              editAccount={handleEditAccount}
-              account={selectedAccount}
-              setSelectedAccount={setSelectedAccount}
-            />
-          </div>
+          <AccountForm
+            createAccount={handleCreateAccount}
+            editAccount={handleEditAccount}
+            account={selectedAccount}
+            setSelectedAccount={setSelectedAccount}
+          />
         )}
       />
     </div>

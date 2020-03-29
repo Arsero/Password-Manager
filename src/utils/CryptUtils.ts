@@ -1,16 +1,15 @@
-import {AES, enc, SHA256} from "crypto-ts";
+import { encryptSeed, decryptSeed, sha256, stringToBytes, bytesToString   } from '@waves/ts-lib-crypto';
 
 export default class CryptUtils {
   static encrypt = (text: string, key: string) => {
-    return AES.encrypt(text, key).toString();
+    return encryptSeed(text, key).toString();
   };
 
   static decrypt = (text: string, key: string) => {
-    let bytes = AES.decrypt(text, key);
-    return bytes.toString(enc.Utf8);
+    return decryptSeed(text, key);
   };
 
   static hash = (text: string) => {
-    return SHA256(text);
+    return sha256(stringToBytes(text)).toString();
   }
 }

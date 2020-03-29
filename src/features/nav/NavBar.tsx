@@ -4,16 +4,18 @@ import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import { useHistory } from "react-router-dom";
 
+interface IProps {
+  isLogged: boolean;
+}
 
-
-export const NavBar = () => {
+export const NavBar: React.FC<IProps> = ({isLogged}) => {
   const history = useHistory();
 
   return (
     <Navbar bg="dark" variant="dark" fixed="top">
       <Container>
         <Navbar.Brand href="/">Password Manager</Navbar.Brand>
-        <Button variant="warning"
+        {isLogged && <Button variant="warning"
           onClick={() => {
             const location = {
               pathname: '/createAccount'
@@ -21,7 +23,7 @@ export const NavBar = () => {
             history.push(location);
           }}>
           <b>Add an account</b>
-        </Button>
+        </Button> }
       </Container>
     </Navbar>
   );

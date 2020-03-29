@@ -11,3 +11,7 @@ export const loadData = path => {
   console.log(path + " loaded !");
   return data;
 };
+
+export const exists = path => {
+  return fs.existsSync(path);
+}

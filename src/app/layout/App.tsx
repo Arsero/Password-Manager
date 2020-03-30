@@ -19,7 +19,7 @@ export const App = () => {
   const [password, setPassword] = useState<string>("");
   const [isRegister, setisRegister] = useState<boolean>(false);
 
-  const pathFile = path.join(remote.app.getPath("appData"), "/accounts.txt");
+  const pathFile = path.join(remote.app.getPath("appData"), "/accounts.pwd");
 
   const handleCreateAccount = (account: IAccount) => {
     setAccounts([...accounts, account]);

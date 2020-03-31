@@ -45,6 +45,21 @@ export const App = () => {
     setSelectedAccount(accounts.filter(a => a.id === id)[0]);
   };
 
+  const updateFile = (pwd) => {
+    try {
+      //crypt with hashpassword
+      setPassword(pwd);
+      const cryptedAccounts = CryptUtils.encrypt(
+        JSON.stringify(accounts),
+        CryptUtils.hash(pwd)
+      );
+
+      fileUtils.saveData(pathFile, cryptedAccounts.toString());
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const loadAccounts = (pwd: string) => {
     try {
       let data = fileUtils.loadData(pathFile);
@@ -63,7 +78,7 @@ export const App = () => {
 
   const registerPassword = (pwd: string) => {
     if (pwd.length > 0) {
-      setPassword(pwd);
+      updateFile(pwd); // file
       return true;
     }
     return false;
@@ -76,17 +91,7 @@ export const App = () => {
 
   useEffect(() => {
     if (isLogged) {
-      try {
-        //crypt with hashpassword
-        const cryptedAccounts = CryptUtils.encrypt(
-          JSON.stringify(accounts),
-          CryptUtils.hash(password)
-        );
-        
-        fileUtils.saveData(pathFile, cryptedAccounts.toString());
-      } catch (error) {
-        console.log(error);
-      }
+      updateFile(password);
     }
   }, [accounts, isLogged]);
 

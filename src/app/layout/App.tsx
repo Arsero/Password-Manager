@@ -9,7 +9,7 @@ import path from "path";
 import { remote } from "electron";
 import fileUtils from "../../utils/FileUtils";
 import { Login } from "../../features/login/Login";
-import CryptUtils from "../../utils/cryptUtils";
+import CryptUtils from "../../utils/CryptUtils";
 
 export const App = () => {
   //initialValues.sort((a, b) => (a.website < b.website ? -1 : 1));

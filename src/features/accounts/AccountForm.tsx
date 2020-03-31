@@ -4,6 +4,7 @@ import "./styles.css";
 import { IAccount } from "../../app/models/account";
 import { v4 as uuid } from "uuid";
 import { useHistory } from "react-router-dom";
+import CryptUtils from '../../utils/CryptUtils';
 
 interface IProps {
   account: IAccount;
@@ -106,6 +107,16 @@ const AccountForm: React.FC<IProps> = ({
             value={account.password}
           />
         </Form.Group>
+        <Button
+            type="button"
+            variant="primary"
+            block
+            onClick={() => {
+              setAccount({ ...account, password: CryptUtils.generatePassword(8) });
+            }}
+          >
+            Generate password
+          </Button>
         <Form.Group controlId="comment">
           <Form.Label>Comment</Form.Label>
           <Form.Control

@@ -29,7 +29,7 @@ const AccountForm: React.FC<IProps> = ({
         email: "",
         username: "",
         password: "",
-        comment: "None"
+        comment: ""
       };
     }
   };
@@ -37,10 +37,18 @@ const AccountForm: React.FC<IProps> = ({
   const [account, setAccount] = useState<IAccount>(initializeForm);
 
   const handleSubmit = event => {
+    let comment = account.comment;
+    if(comment.length === 0) {
+      comment = 'None';
+      setAccount({...account, comment: comment});
+    }
+
+
     if (account.id.length === 0) {
       let newAccount = {
         ...account,
-        id: uuid()
+        id: uuid(),
+        comment: comment
       };
       createAccount(newAccount);
     } 
@@ -111,6 +119,7 @@ const AccountForm: React.FC<IProps> = ({
             type="button"
             variant="primary"
             block
+            style={{marginBottom: '15px'}}
             onClick={() => {
               setAccount({ ...account, password: CryptUtils.generatePassword(8) });
             }}
@@ -123,7 +132,7 @@ const AccountForm: React.FC<IProps> = ({
             as="textarea"
             name="comment"
             rows="3"
-            placeholder="Any comment for your account ? Like a question."
+            placeholder="None"
             onChange={handleInputChange}
             value={account.comment}
           />

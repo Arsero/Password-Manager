@@ -24,6 +24,13 @@ export const AccountList: React.FC<IProps> = ({
   copyPassword
 }) => {
   const history = useHistory();
+  const passwordStar = (lenght: number) => {
+    let result= "";
+    for(let i = 0; i < lenght; i++) {
+      result += "*";
+    }
+    return result;
+  }
 
   return (
     <Container style={{ marginTop: "5em" }}>
@@ -46,7 +53,7 @@ export const AccountList: React.FC<IProps> = ({
                 <td>{account.website}</td>
                 <td>{account.email}</td>
                 <td>{account.username}</td>
-                <td>***********</td>
+                <td>{ passwordStar(account.password.length)}</td>
                 <td>{account.comment}</td>
                 <td style={{ textAlign: "center" }}>
                   <ButtonGroup>

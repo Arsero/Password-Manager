@@ -97,7 +97,7 @@ export const App = () => {
 
   return (
     <div>
-      <NavBar isLogged={isLogged} />
+      <NavBar isLogged={isLogged} setisRegister={setisRegister} />
       <Route
         exact
         path="/"

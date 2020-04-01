@@ -2,13 +2,8 @@ import React from "react";
 import { Container, Table, Button, Image, ButtonGroup } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
 import { IAccount } from "../../app/models/account";
-// @ts-ignore
-import trashImage from "../../assets/images/trash.png";
-// @ts-ignore
-import copyImage from "../../assets/images/copy.png";
-// @ts-ignore
-import editImage from "../../assets/images/edit.png";
 import "./styles.css";
+import { Trash, PencilSquare, Files } from 'react-bootstrap-icons';
 
 interface IProps {
   accounts: IAccount[];
@@ -64,7 +59,7 @@ export const AccountList: React.FC<IProps> = ({
                       className="td-button"
                       onClick={() => copyPassword(account.id)}
                     >
-                      <Image src={copyImage} />
+                      <Files size={25} />
                     </Button>
                     <Button
                       variant="dark"
@@ -79,7 +74,7 @@ export const AccountList: React.FC<IProps> = ({
                         history.push(location);
                       }}
                     >
-                      <Image src={editImage} />
+                      <PencilSquare size={25} />
                     </Button>
                     <Button
                       variant="danger"
@@ -87,7 +82,7 @@ export const AccountList: React.FC<IProps> = ({
                       className="td-button"
                       onClick={() => deleteAccount(account.id)}
                     >
-                      <Image src={trashImage} />
+                      <Trash size={25} />
                     </Button>
                   </ButtonGroup>
                 </td>

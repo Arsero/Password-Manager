@@ -54,7 +54,7 @@ export const Login: React.FC<IProps> = ({
 
   return (
     <Container>
-      {isRegister && (
+      {isRegister ? (
         <Form onSubmit={handleSubmitLogin} className="form-center">
           <Form.Group controlId="password">
             <Form.Label>Login</Form.Label>
@@ -81,9 +81,7 @@ export const Login: React.FC<IProps> = ({
             Login
           </Button>
         </Form>
-      )}
-
-      {!isRegister && (
+      ) : (
         <Form onSubmit={handleSubmitRegister} className="form-center">
           <Form.Group controlId="password">
             <Form.Label>Register</Form.Label>

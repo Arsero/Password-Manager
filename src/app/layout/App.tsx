@@ -12,7 +12,6 @@ import { Login } from "../../features/login/Login";
 import CryptUtils from "../../utils/CryptUtils";
 
 export const App = () => {
-  //initialValues.sort((a, b) => (a.website < b.website ? -1 : 1));
   const [accounts, setAccounts] = useState<IAccount[]>([]);
   const [selectedAccount, setSelectedAccount] = useState<IAccount>(null);
   const [isLogged, setisLogged] = useState<boolean>(false);
@@ -96,7 +95,7 @@ export const App = () => {
   }, [accounts, isLogged]);
 
   return (
-    <div>
+    <>
       <NavBar isLogged={isLogged} setisRegister={setisRegister} />
       <Route
         exact
@@ -134,6 +133,6 @@ export const App = () => {
           />
         )}
       />
-    </div>
+    </>
   );
 };

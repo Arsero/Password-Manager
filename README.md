@@ -2,9 +2,6 @@
 ## Table of contents
 * [Getting Started](#Getting-Started)
 * [Built with](#Built-with)
-* [Installation](#Installation)
-* [Usage](#Usage)
-* [Support](#Support)
 * [License](#License)
 
 ## Getting Started
@@ -18,12 +15,6 @@ This is a simple password manager. Store your accounts information into a crypte
 - [ts-lib-crypto](https://github.com/wavesplatform/ts-lib-crypto)
 - [Bootstrap](https://github.com/twbs/bootstrap)
 - [Webpack](https://github.com/webpack/webpack)
-
-## Installation
-
-## Usage
-
-## Support
 
 ## License
 Distributed under the MIT License. See `LICENSE` for more information.

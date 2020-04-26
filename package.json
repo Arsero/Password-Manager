@@ -1,6 +1,6 @@
 {
   "name": "password-manager",
-  "productName": "password-manager",
+  "productName": "Password Manager",
   "version": "1.0.0",
   "description": "A simple password manager",
   "main": ".webpack/main",
@@ -20,13 +20,13 @@
   "license": "MIT",
   "config": {
     "forge": {
-      "packagerConfig": {},
+      "packagerConfig": {
+        "icon": "icons/shield.icns"
+      },
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "password_manager"
-          }
+          "config": {}
         },
         {
           "name": "@electron-forge/maker-zip",

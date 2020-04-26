@@ -24,7 +24,7 @@
   <h3 align="center">Password Manager</h3>
 
   <p align="center">
-    A simple password manager.
+    A simple password manager
     <br />
 </p>
 

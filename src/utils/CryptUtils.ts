@@ -11,7 +11,7 @@ export default class CryptUtils {
   static charactersLength = CryptUtils.characters.length;
 
   static reg = new RegExp(
-    "^(?=.*[a-z])(?=.*[A-Z])(?=.*d)(?=.*[@$!%*?&])[A-Za-zd@$!%*?&]{8,}$"
+    "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,}$"
   );
 
   static encrypt = (text: string, key: string) => {
@@ -36,6 +36,7 @@ export default class CryptUtils {
           Math.floor(Math.random() * CryptUtils.charactersLength)
         );
       }
+      console.log(result);
     } while (!CryptUtils.reg.test(result));
 
     return result;

@@ -18,30 +18,34 @@ export const App = () => {
   const [password, setPassword] = useState<string>("");
   const [isRegister, setisRegister] = useState<boolean>(false);
 
-  const pathFile = path.join(remote.app.getPath("appData"), "/password-manager/accounts.pwd");
+  const pathFile = path.join(
+    remote.app.getPath("appData"),
+    process.env.npm_package_productName + "/accounts.pwd"
+  );
 
+  console.log(pathFile);
   const handleCreateAccount = (account: IAccount) => {
     setAccounts([...accounts, account]);
   };
 
   const handleEditAccount = (account: IAccount) => {
-    setAccounts([...accounts.filter(a => a.id !== account.id), account]);
+    setAccounts([...accounts.filter((a) => a.id !== account.id), account]);
   };
 
   const handleDeleteAccount = (id: string) => {
-    setAccounts([...accounts.filter(a => a.id !== id)]);
+    setAccounts([...accounts.filter((a) => a.id !== id)]);
   };
 
   const handleCopyPassword = (id: string) => {
     // Copy the password to the clipboard
-    let pwd = accounts.find(a => a.id === id).password;
+    let pwd = accounts.find((a) => a.id === id).password;
     if (pwd !== undefined) {
       navigator.clipboard.writeText(pwd);
     }
   };
 
   const handleSelectAccount = (id: string) => {
-    setSelectedAccount(accounts.filter(a => a.id === id)[0]);
+    setSelectedAccount(accounts.filter((a) => a.id === id)[0]);
   };
 
   const updateFile = (pwd) => {

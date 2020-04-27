@@ -20,7 +20,7 @@ export const App = () => {
 
   const pathFile = path.join(
     remote.app.getPath("appData"),
-    process.env.npm_package_productName + "/accounts.pwd"
+    "Password Manager/accounts.pwd"
   );
 
   console.log(pathFile);

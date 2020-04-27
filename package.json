@@ -1,7 +1,7 @@
 {
   "name": "password-manager",
   "productName": "Password Manager",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple password manager",
   "main": ".webpack/main",
   "types": "dist/index.d.ts",

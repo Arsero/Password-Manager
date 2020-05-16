@@ -139,5 +139,6 @@ Project Link: [https://github.com/Arsero/Password-Manager](https://github.com/Ar
 
 - [HunteRoi](https://github.com/HunteRoi)
 - [Gservais](https://github.com/Gservais)
+- [Best README Template](https://github.com/othneildrew/Best-README-Template)
 
 [product-screenshot]: images/screenshot.png

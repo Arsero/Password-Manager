@@ -18,7 +18,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/Arsero/Password-Manager">
-    <img src="icons/shield.png" alt="Logo" width="80" height="80">
+    <img src="icons/shield.png" alt="Logo" width="200" height="200">
   </a>
 
   <h3 align="center">Password Manager</h3>
@@ -29,31 +29,36 @@
 </p>
 
 <!-- TABLE OF CONTENTS -->
+
 ## Table of Contents
-* [About the Project](#about-the-project)
-  * [Built With](#built-with)
-* [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
-* [Roadmap](#roadmap)
-* [Contributing](#contributing)
-* [License](#license)
-* [Contact](#contact)
+
+- [About the Project](#about-the-project)
+  - [Built With](#built-with)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+- [Roadmap](#roadmap)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
 ## About The Project
+
 ![Simple Password Manager][product-screenshot]
-This is a simple password manager. Store your accounts information into a crypted local file. Lock/unlock this file with a secret password.  
-  
+This is a simple password manager. Store your accounts information into a crypted local file. Lock/unlock this file with a secret password.
+
 ### Built with
-* [Electron-forge](https://github.com/electron-userland/electron-forge)
-* [Node](https://nodejs.org/en/about/)
-* [React](https://github.com/facebook/react)
-* [Typescript](https://github.com/microsoft/TypeScript)
-* [ts-lib-crypto](https://github.com/wavesplatform/ts-lib-crypto)
-* [Bootstrap](https://github.com/twbs/bootstrap)
-* [Webpack](https://github.com/webpack/webpack)
+
+- [Electron-forge](https://github.com/electron-userland/electron-forge)
+- [Node](https://nodejs.org/en/about/)
+- [React](https://github.com/facebook/react)
+- [Typescript](https://github.com/microsoft/TypeScript)
+- [ts-lib-crypto](https://github.com/wavesplatform/ts-lib-crypto)
+- [Bootstrap](https://github.com/twbs/bootstrap)
+- [Webpack](https://github.com/webpack/webpack)
 
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
 To get a local copy up and running follow these next steps.
@@ -61,7 +66,9 @@ To get a local copy up and running follow these next steps.
 ### Prerequisites
 
 This project requires Node, plus git installed.
-* npm
+
+- npm
+
 ```sh
 npm install npm@latest -g
 ```
@@ -69,28 +76,37 @@ npm install npm@latest -g
 ### Installation
 
 1. Clone the repo
+
 ```sh
 git clone https://github.com/Arsero/Password-Manager.git
 ```
+
 2. Install NPM packages
+
 ```sh
 npm install
 ```
+
 3. Start the application
+
 ```sh
 npm start
 ```
+
 4. Build an installer (see the out folder)
+
 ```sh
 npm run make
 ```
 
 <!-- ROADMAP -->
+
 ## Roadmap
 
 See the [open issues](https://github.com/Arsero/Password-Manager/issues) for a list of proposed features (and known issues).
 
 <!-- CONTRIBUTING -->
+
 ## Contributing
 
 Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
@@ -102,10 +118,13 @@ Contributions are what make the open source community such an amazing place to b
 5. Open a Pull Request
 
 ## License
+
 Distributed under the MIT License. See `LICENSE` for more information.
 
 <!-- CONTACT -->
+
 ## Contact
+
 Arsero - azzedine.elb@outlook.com
 
 Project Link: [https://github.com/Arsero/Password-Manager](https://github.com/Arsero/Password-Manager)

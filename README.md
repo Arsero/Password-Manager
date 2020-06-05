@@ -18,7 +18,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/Arsero/Password-Manager">
-    <img src="icons/shield.png" alt="Logo" width="80" height="80">
+    <img src="icons/shield.png" alt="Logo" width="200" height="200">
   </a>
 
   <h3 align="center">Password Manager</h3>

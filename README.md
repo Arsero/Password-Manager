@@ -105,6 +105,10 @@ npm run make
 
 See the [open issues](https://github.com/Arsero/Password-Manager/issues) for a list of proposed features (and known issues).
 
+- Replace the simple crypted file by a database (sqlite)
+- Update UI
+- Refactor security (pages)
+
 <!-- CONTRIBUTING -->
 
 ## Contributing
@@ -125,8 +129,16 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 ## Contact
 
-Arsero - azzedine.elb@outlook.com
+[Arsero](https://github.com/Arsero) - azzedine.elb@outlook.com
 
 Project Link: [https://github.com/Arsero/Password-Manager](https://github.com/Arsero/Password-Manager)
+
+<!-- ACKNOWLEDGMENTS -->
+
+## Acknowledgments
+
+- [HunteRoi](https://github.com/HunteRoi)
+- [Gservais](https://github.com/Gservais)
+- [Best README Template](https://github.com/othneildrew/Best-README-Template)
 
 [product-screenshot]: images/screenshot.png

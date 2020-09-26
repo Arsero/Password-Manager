@@ -1,7 +1,7 @@
 import React, { useState, FormEvent } from "react";
 import { Form, Container, Button, ButtonGroup } from "react-bootstrap";
 import "./styles.css";
-import { IAccount } from "../../app/models/account";
+import { IAccount } from "../../models/account";
 import { v4 as uuid } from "uuid";
 import { useHistory } from "react-router-dom";
 import CryptUtils from '../../utils/CryptUtils';
@@ -42,7 +42,6 @@ const AccountForm: React.FC<IProps> = ({
       comment = 'None';
       setAccount({...account, comment: comment});
     }
-
 
     if (account.id.length === 0) {
       let newAccount = {

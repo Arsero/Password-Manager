@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Table, Button, Image, ButtonGroup } from "react-bootstrap";
 import { useHistory } from "react-router-dom";
-import { IAccount } from "../../app/models/account";
+import { IAccount } from "../../models/account";
 import "./styles.css";
 import { Trash, PencilSquare, Files } from 'react-bootstrap-icons';
 

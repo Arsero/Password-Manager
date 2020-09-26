@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { AccountList } from "../../features/accounts/AccountList";
-import { NavBar } from "../../features/nav/NavBar";
-import { IAccount } from "../models/account";
+import { AccountList } from "../../components/accounts/AccountList";
+import { NavBar } from "../../components/nav/NavBar";
+import { IAccount } from "../../models/account";
 import { Route } from "react-router-dom";
-import AccountForm from "../../features/accounts/AccountForm";
+import AccountForm from "../../components/accounts/AccountForm";
 import path from "path";
 import { remote } from "electron";
 import fileUtils from "../../utils/FileUtils";
-import { Login } from "../../features/login/Login";
+import { Login } from "../../components/login/Login";
 import CryptUtils from "../../utils/CryptUtils";
 
 export const App = () => {
@@ -81,7 +81,7 @@ export const App = () => {
 
   const registerPassword = (pwd: string) => {
     if (pwd.length > 0) {
-      updateFile(pwd); // file
+      updateFile(pwd);
       return true;
     }
     return false;

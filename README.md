@@ -106,8 +106,10 @@ npm run make
 See the [open issues](https://github.com/Arsero/Password-Manager/issues) for a list of proposed features (and known issues).
 
 - Replace the simple crypted file by a database (sqlite)
-- Update UI
+- Update UI with bulma CSS and hamburger menu
+- Refactor pattern components/containers
 - Refactor security (pages)
+- Add loading component
 
 <!-- CONTRIBUTING -->
 

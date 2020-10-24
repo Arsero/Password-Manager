@@ -1,10 +1,9 @@
 {
-  "name": "password-manager",
-  "productName": "Password Manager",
-  "version": "1.0.1",
-  "description": "A simple password manager",
+  "name": "acryptex",
+  "productName": "acryptex",
+  "version": "1.0.0",
+  "description": "My Electron application description",
   "main": ".webpack/main",
-  "types": "dist/index.d.ts",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
@@ -14,19 +13,19 @@
   },
   "keywords": [],
   "author": {
-    "name": "Arsero",
+    "name": "Azzedine",
     "email": "54241944+Arsero@users.noreply.github.com"
   },
   "license": "MIT",
   "config": {
     "forge": {
-      "packagerConfig": {
-        "icon": "icons/shield.icns"
-      },
+      "packagerConfig": {},
       "makers": [
         {
           "name": "@electron-forge/maker-squirrel",
-          "config": {}
+          "config": {
+            "name": "acryptex"
+          }
         },
         {
           "name": "@electron-forge/maker-zip",
@@ -36,15 +35,11 @@
         },
         {
           "name": "@electron-forge/maker-deb",
-          "config": {
-            "bin": "Password Manager"
-          }
+          "config": {}
         },
         {
           "name": "@electron-forge/maker-rpm",
-          "config": {
-            "bin": "Password Manager"
-          }
+          "config": {}
         }
       ],
       "plugins": [
@@ -57,7 +52,7 @@
               "entryPoints": [
                 {
                   "html": "./src/index.html",
-                  "js": "./src/index.tsx",
+                  "js": "./src/renderer.js",
                   "name": "main_window"
                 }
               ]
@@ -68,45 +63,19 @@
     }
   },
   "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.50",
-    "@electron-forge/maker-deb": "^6.0.0-beta.50",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.50",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.50",
-    "@electron-forge/maker-zip": "^6.0.0-beta.50",
-    "@electron-forge/plugin-webpack": "^6.0.0-beta.50",
+    "@electron-forge/cli": "6.0.0-beta.53",
+    "@electron-forge/maker-deb": "6.0.0-beta.53",
+    "@electron-forge/maker-rpm": "6.0.0-beta.53",
+    "@electron-forge/maker-squirrel": "6.0.0-beta.53",
+    "@electron-forge/maker-zip": "6.0.0-beta.53",
+    "@electron-forge/plugin-webpack": "6.0.0-beta.53",
     "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
-    "@types/react-redux": "^7.1.7",
-    "css-loader": "^3.4.2",
-    "electron": "8.2.4",
-    "electron-rebuild": "^1.10.1",
-    "file-loader": "^6.0.0",
-    "node-loader": "^0.6.0",
-    "redux-devtools": "^3.5.0",
-    "style-loader": "^0.23.1",
-    "typescript": "^3.8.3"
+    "css-loader": "^4.2.1",
+    "electron": "10.1.5",
+    "node-loader": "^1.0.1",
+    "style-loader": "^1.2.1"
   },
   "dependencies": {
-    "@types/react": "^16.9.25",
-    "@types/react-dom": "^16.9.5",
-    "@types/uuid": "^7.0.2",
-    "@waves/ts-lib-crypto": "^1.4.3",
-    "bootstrap": "^4.4.1",
-    "electron-squirrel-startup": "^1.0.0",
-    "fork-ts-checker-webpack-plugin": "^4.1.1",
-    "prettier": "^2.0.1",
-    "react": "^16.13.1",
-    "react-bootstrap": "^1.0.0-beta.17",
-    "react-bootstrap-icons": "^1.0.1-alpha3",
-    "react-dom": "^16.13.1",
-    "react-redux": "^7.2.0",
-    "react-router-dom": "^5.1.2",
-    "redux": "^4.0.5",
-    "redux-devtools-extension": "^2.13.8",
-    "ts-loader": "^6.2.2",
-    "tslint": "^6.1.0",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-config-standard": "^9.0.0",
-    "tslint-react": "^4.2.0",
-    "uuid": "^7.0.2"
+    "electron-squirrel-startup": "^1.0.0"
   }
 }

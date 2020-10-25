@@ -17,14 +17,14 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/Arsero/Password-Manager">
+  <a href="https://github.com/Arsero/acryptex">
     <img src="icons/shield.png" alt="Logo" width="200" height="200">
   </a>
 
-  <h3 align="center">Password Manager</h3>
+  <h3 align="center">acryptex</h3>
 
   <p align="center">
-    A simple password manager
+    Password Manager
     <br />
 </p>
 
@@ -45,16 +45,14 @@
 ## About The Project
 
 ![Simple Password Manager][product-screenshot]
-This is a simple password manager. Store your accounts information into a crypted local file. Lock/unlock this file with a secret password.
+This is a password manager. Store your accounts information into a crypted local file. Lock/unlock this file with a secret password.
 
 ### Built with
 
 - [Electron-forge](https://github.com/electron-userland/electron-forge)
 - [Node](https://nodejs.org/en/about/)
 - [React](https://github.com/facebook/react)
-- [Typescript](https://github.com/microsoft/TypeScript)
 - [ts-lib-crypto](https://github.com/wavesplatform/ts-lib-crypto)
-- [Bootstrap](https://github.com/twbs/bootstrap)
 - [Webpack](https://github.com/webpack/webpack)
 
 <!-- GETTING STARTED -->
@@ -133,7 +131,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 [Arsero](https://github.com/Arsero) - azzedine.elb@outlook.com
 
-Project Link: [https://github.com/Arsero/Password-Manager](https://github.com/Arsero/Password-Manager)
+Project Link: [https://github.com/Arsero/acryptex](https://github.com/Arsero/acryptex)
 
 <!-- ACKNOWLEDGMENTS -->
 

@@ -8,8 +8,7 @@
     "start": "electron-forge start",
     "package": "electron-forge package",
     "make": "electron-forge make",
-    "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
+    "publish": "electron-forge publish"
   },
   "keywords": [],
   "author": {
@@ -46,9 +45,9 @@
         [
           "@electron-forge/plugin-webpack",
           {
-            "mainConfig": "./webpack.main.config.js",
+            "mainConfig": "./configs/webpack.main.config.js",
             "renderer": {
-              "config": "./webpack.renderer.config.js",
+              "config": "./configs/webpack.renderer.config.js",
               "entryPoints": [
                 {
                   "html": "./src/index.html",
@@ -83,6 +82,7 @@
     "@types/react": "^16.9.53",
     "@types/react-dom": "^16.9.8",
     "electron-squirrel-startup": "^1.0.0",
+    "frameless-titlebar": "^2.1.4",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-hot-loader": "^4.13.0",

@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import TitleBar from 'frameless-titlebar';
 import { remote } from 'electron';
-
 const currentWindow = remote.getCurrentWindow();
 
 export const Header = () => {
@@ -38,13 +37,9 @@ export const Header = () => {
         onClose={() => currentWindow.close()}
         onMinimize={() => currentWindow.minimize()}
         onMaximize={handleMaximize}
-        // when the titlebar is double clicked
         onDoubleClick={handleMaximize}
-        // hide minimize windows control
         disableMinimize={false}
-        // hide maximize windows control
         disableMaximize={false}
-        // is the current window maximized?
         maximized={maximized}
       />
     </div>

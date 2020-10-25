@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import TitleBar from 'frameless-titlebar';
 import { remote } from 'electron';
 
@@ -32,7 +32,6 @@ export const Header = () => {
   return (
     <div>
       <TitleBar
-        iconSrc={icon} // app icon
         currentWindow={currentWindow} // electron window instance
         platform={process.platform} // win32, darwin, linux
         title='acryptex'

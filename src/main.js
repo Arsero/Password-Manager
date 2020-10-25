@@ -12,6 +12,9 @@ const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 1000,
     height: 800,
+    minWidth: 800,
+    minHeight: 600,
+    titleBarStyle: 'customButtonsOnHover',
     frame: false,
   });
 

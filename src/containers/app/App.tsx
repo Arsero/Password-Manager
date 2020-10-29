@@ -9,8 +9,7 @@ import path from "path";
 import fileUtils from "../../utils/FileUtils";
 import { Login } from "../../components/login/Login";
 import CryptUtils from "../../utils/CryptUtils";
-
-const { app } = require('electron')
+import {remote} from 'electron';
 
 export const App = () => {
   const [accounts, setAccounts] = useState<IAccount[]>([]);
@@ -20,7 +19,7 @@ export const App = () => {
   const [isRegister, setisRegister] = useState<boolean>(false);
 
   const pathFile = path.join(
-    app.getPath("appData"),
+    remote.app.getPath("appData"),
     "Password Manager/accounts.pwd"
   );
 

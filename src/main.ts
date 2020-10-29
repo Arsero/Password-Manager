@@ -19,7 +19,8 @@ const createWindow = () => {
     frame: false,
     webPreferences: {
       nodeIntegration: true,
-      nodeIntegrationInWorker: true
+      nodeIntegrationInWorker: true,
+      enableRemoteModule: true
     }
   });
 

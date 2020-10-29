@@ -35,24 +35,18 @@
         },
         {
           "name": "@electron-forge/maker-deb",
-          "config": {
-            "bin": "Password Manager"
-          }
         },
         {
           "name": "@electron-forge/maker-rpm",
-          "config": {
-            "bin": "Password Manager"
-          }
         }
       ],
       "plugins": [
         [
           "@electron-forge/plugin-webpack",
           {
-            "mainConfig": "./config/webpack.main.config.js",
+            "mainConfig": "./webpack.main.config.js",
             "renderer": {
-              "config": "./config/webpack.renderer.config.js",
+              "config": "./webpack.renderer.config.js",
               "entryPoints": [
                 {
                   "html": "./src/index.html",

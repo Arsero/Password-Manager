@@ -52,8 +52,8 @@ This is a password manager. Store your accounts information into a crypted local
 - [Electron-forge](https://github.com/electron-userland/electron-forge)
 - [Node](https://nodejs.org/en/about/)
 - [React](https://github.com/facebook/react)
-- [ts-lib-crypto](https://github.com/wavesplatform/ts-lib-crypto)
 - [Webpack](https://github.com/webpack/webpack)
+- [Frameless titlebar](https://github.com/Cristian006/frameless-titlebar)
 
 <!-- GETTING STARTED -->
 
@@ -63,38 +63,32 @@ To get a local copy up and running follow these next steps.
 
 ### Prerequisites
 
-This project requires Node, plus git installed.
-
-- npm
-
-```sh
-npm install npm@latest -g
-```
+This project requires Node, yarn and git installed.
 
 ### Installation
 
 1. Clone the repo
 
 ```sh
-git clone https://github.com/Arsero/Password-Manager.git
+git clone https://github.com/Arsero/acryptex.git
 ```
 
 2. Install NPM packages
 
 ```sh
-npm install
+yarn install
 ```
 
 3. Start the application
 
 ```sh
-npm start
+yarn start
 ```
 
 4. Build an installer (see the out folder)
 
 ```sh
-npm run make
+npm run make *not available*
 ```
 
 <!-- ROADMAP -->
@@ -104,10 +98,11 @@ npm run make
 See the [open issues](https://github.com/Arsero/Password-Manager/issues) for a list of proposed features (and known issues).
 
 - Replace the simple crypted file by a database (sqlite)
-- Update UI with bulma CSS and hamburger menu
 - Refactor pattern components/containers
 - Refactor security (pages)
 - Add loading component
+- Add splash screen
+- Add OAuth to store file in dropbox / drive / ...
 
 <!-- CONTRIBUTING -->
 
@@ -140,7 +135,5 @@ Project Link: [https://github.com/Arsero/acryptex](https://github.com/Arsero/acr
 - [HunteRoi](https://github.com/HunteRoi)
 - [Gservais](https://github.com/Gservais)
 - [Best README Template](https://github.com/othneildrew/Best-README-Template)
-
-https://github.com/Cristian006/frameless-titlebar
 
 [product-screenshot]: images/screenshot.png

@@ -6,10 +6,11 @@ import { IAccount } from "../../models/account";
 import { Route } from "react-router-dom";
 import AccountForm from "../../components/accounts/AccountForm";
 import path from "path";
-import { remote } from "electron";
 import fileUtils from "../../utils/FileUtils";
 import { Login } from "../../components/login/Login";
 import CryptUtils from "../../utils/CryptUtils";
+
+const { app } = require('electron')
 
 export const App = () => {
   const [accounts, setAccounts] = useState<IAccount[]>([]);
@@ -19,7 +20,7 @@ export const App = () => {
   const [isRegister, setisRegister] = useState<boolean>(false);
 
   const pathFile = path.join(
-    remote.app.getPath("appData"),
+    app.getPath("appData"),
     "Password Manager/accounts.pwd"
   );
 

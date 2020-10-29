@@ -1,15 +1,17 @@
+const plugins = require('./webpack.plugins');
+
 module.exports = {
   /**
    * This is the main entry point for your application, it's the first file
    * that runs in the main process.
    */
-  target: 'electron-renderer',
-  entry: './src/main.js',
+  entry: './src/main.ts',
   // Put your normal webpack config below here
   module: {
-    rules: require('./webpack.rules'),
+    rules: require('./webpack.rules')
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.css'],
+    extensions: ['.js', '.ts', '.jsx', '.tsx', '.css']
   },
+  plugins: plugins
 };

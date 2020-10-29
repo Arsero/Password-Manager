@@ -34,10 +34,10 @@
           ]
         },
         {
-          "name": "@electron-forge/maker-deb",
+          "name": "@electron-forge/maker-deb"
         },
         {
-          "name": "@electron-forge/maker-rpm",
+          "name": "@electron-forge/maker-rpm"
         }
       ],
       "plugins": [
@@ -69,37 +69,33 @@
     "@electron-forge/plugin-webpack": "^6.0.0-beta.50",
     "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
     "@types/react-redux": "^7.1.7",
-    "css-loader": "^3.4.2",
-    "electron": "8.2.4",
-    "electron-rebuild": "^1.10.1",
+    "css-loader": "^5.0.0",
+    "electron": "10.1.5",
+    "electron-rebuild": "^2.3.2",
     "file-loader": "^6.0.0",
-    "node-loader": "^0.6.0",
+    "node-loader": "^1.0.2",
     "redux-devtools": "^3.5.0",
-    "style-loader": "^0.23.1",
-    "typescript": "^3.8.3"
+    "style-loader": "^2.0.0",
+    "typescript": "^4.0.5"
   },
   "dependencies": {
     "@types/react": "^16.9.25",
     "@types/react-dom": "^16.9.5",
-    "@types/uuid": "^7.0.2",
+    "@types/uuid": "^8.3.0",
     "@waves/ts-lib-crypto": "^1.4.3",
     "bootstrap": "^4.4.1",
     "electron-squirrel-startup": "^1.0.0",
-    "fork-ts-checker-webpack-plugin": "^4.1.1",
+    "fork-ts-checker-webpack-plugin": "^5.2.1",
     "prettier": "^2.0.1",
-    "react": "^16.13.1",
+    "react": "^17.0.1",
     "react-bootstrap": "^1.0.0-beta.17",
     "react-bootstrap-icons": "^1.0.1-alpha3",
-    "react-dom": "^16.13.1",
+    "react-dom": "^17.0.1",
     "react-redux": "^7.2.0",
     "react-router-dom": "^5.1.2",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
-    "ts-loader": "^6.2.2",
-    "tslint": "^6.1.0",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-config-standard": "^9.0.0",
-    "tslint-react": "^4.2.0",
-    "uuid": "^7.0.2"
+    "ts-loader": "^8.0.7",
+    "uuid": "^8.3.1"
   }
 }

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TitleBar from 'frameless-titlebar';
 import { remote } from 'electron';
+
 const currentWindow = remote.getCurrentWindow();
 
 export const Header = () => {

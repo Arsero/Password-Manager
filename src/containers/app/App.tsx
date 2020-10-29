@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { AccountList } from "../../components/accounts/AccountList";
-import { NavBar } from "../../components/nav/NavBar";
 import { IAccount } from "../../models/account";
 import { Route } from "react-router-dom";
 import AccountForm from "../../components/accounts/AccountForm";
@@ -100,7 +99,6 @@ export const App = () => {
 
   return (
     <>
-      <NavBar isLogged={isLogged} setisRegister={setisRegister} />
       <Route
         exact
         path="/"

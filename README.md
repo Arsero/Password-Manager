@@ -17,8 +17,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/Arsero/acryptex">
-    <img src="icons/shield.png" alt="Logo" width="200" height="200">
+  <a href="https://github.com/Arsero/acryptex_old">
+    <img src="resources/icons/shield.png" alt="Logo" width="200" height="200">
   </a>
 
   <h3 align="center">acryptex</h3>
@@ -95,7 +95,7 @@ npm run make *not available*
 
 ## Roadmap
 
-See the [open issues](https://github.com/Arsero/Password-Manager/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/Arsero/acryptex_old/issues) for a list of proposed features (and known issues).
 
 - Replace the simple crypted file by a database (sqlite)
 - Refactor pattern components/containers
@@ -126,7 +126,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 [Arsero](https://github.com/Arsero) - azzedine.elb@outlook.com
 
-Project Link: [https://github.com/Arsero/acryptex](https://github.com/Arsero/acryptex)
+Project Link: [https://github.com/Arsero/acryptex_old](https://github.com/Arsero/acryptex_old)
 
 <!-- ACKNOWLEDGMENTS -->
 
@@ -136,4 +136,4 @@ Project Link: [https://github.com/Arsero/acryptex](https://github.com/Arsero/acr
 - [Gservais](https://github.com/Gservais)
 - [Best README Template](https://github.com/othneildrew/Best-README-Template)
 
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: resources/images/screenshot.png

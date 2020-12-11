@@ -83,7 +83,7 @@ const reducer = (state: State = initialState, action: any) => {
       break;
 
     case DEL_ACCOUNT:
-      accounts = serviceAccount.Remove(action.payload);
+      accounts = serviceAccount.Delete(action.payload);
       return {
         ...state,
         accounts: accounts,

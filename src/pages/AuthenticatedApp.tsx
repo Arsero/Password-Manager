@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 import AccountList from '../components/Account/AccountList';
 import { connect } from 'react-redux';
 
@@ -9,7 +10,29 @@ const mapStateToProps = (state: any) => {
 const AuthenticatedApp = ({ accounts }: any) => {
   return (
     <div className='container'>
-      <AccountList accounts={accounts} />
+      <Route
+        path='/accounts'
+        render={() => (
+          <AccountList
+            accounts={accounts}
+            deleteAccount={handleDeleteAccount}
+            copyPassword={handleCopyPassword}
+            selectAccount={handleSelectAccount}
+          />
+        )}
+      />
+
+      <Route
+        path={['/createAccount', '/manage/:id']}
+        render={() => (
+          <AccountForm
+            createAccount={handleCreateAccount}
+            editAccount={handleEditAccount}
+            account={selectedAccount}
+            setSelectedAccount={setSelectedAccount}
+          />
+        )}
+      />
     </div>
   );
 };

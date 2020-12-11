@@ -6,6 +6,7 @@ import {
   UPD_ACCOUNT,
   SELECT_ACCOUNT,
   GET_ACCOUNT,
+  COPY_PWD,
 } from '../actions/actions';
 import ServiceAccount from '../db/ServiceAccount';
 import Account from '../models/account';
@@ -77,6 +78,7 @@ const reducer = (state: State = initialState, action: any) => {
       return {
         ...state,
         accounts: accounts,
+        selectedAccount: null,
       };
       break;
 
@@ -100,6 +102,14 @@ const reducer = (state: State = initialState, action: any) => {
         ...state,
         account: serviceAccount.Get(action.payload),
       };
+      break;
+
+    case COPY_PWD:
+      let pwd = accounts.find((a) => a.id === action.payload).password;
+      if (pwd !== undefined) {
+        navigator.clipboard.writeText(pwd);
+      }
+      return state;
       break;
 
     default:

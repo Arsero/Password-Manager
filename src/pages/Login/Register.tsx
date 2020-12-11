@@ -13,7 +13,7 @@ const mapDispatchToProps = (dispatch: any) => {
 const Register = ({ register }: any) => {
   const [secret, setSecret] = useState('');
   const [badPassword, setBadPassword] = useState(false);
-  const handleInputChange = (event: FormEvent<HTMLInputElement>) => {
+  const handleInputChange = (event: any) => {
     setSecret(event.currentTarget.value);
   };
 

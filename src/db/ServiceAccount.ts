@@ -1,6 +1,7 @@
 import Account from './../models/account';
 import { SaveDB, LoadDB, ExistDB } from './db';
 import { appPath } from '../constants/appPath';
+import { v4 as uuid } from 'uuid';
 
 class ServiceAccount {
   secret: string;
@@ -27,8 +28,10 @@ class ServiceAccount {
   }
 
   Add(account: Account) {
-    this.accounts.push(account);
+    let newAccount = { ...account, id: uuid() };
+    this.accounts.push(newAccount);
     this.Commit();
+
     return this.accounts;
   }
 
@@ -41,7 +44,7 @@ class ServiceAccount {
     return this.accounts;
   }
 
-  Remove(id: string) {
+  Delete(id: string) {
     this.accounts = this.accounts.filter((a) => a.id !== id);
     this.Commit();
     return this.accounts;

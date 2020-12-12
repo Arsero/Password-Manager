@@ -5316,6 +5316,14 @@ rcedit@^2.0.0:
   resolved "https://registry.yarnpkg.com/rcedit/-/rcedit-2.3.0.tgz#951685a079db98a4cc8c21ebab75e374d5a0b108"
   integrity sha512-h1gNEl9Oai1oijwyJ1WYqYSXTStHnOcv1KYljg/8WM4NAg3H1KBK3azIaKkQ1WQl+d7PoJpcBMscPfLXVKgCLQ==
 
+react-aria-offcanvas@^1.4.2:
+  version "1.4.2"
+  resolved "https://registry.yarnpkg.com/react-aria-offcanvas/-/react-aria-offcanvas-1.4.2.tgz#54c6881cc2fca702b799d7b343ee188c4ebcb121"
+  integrity sha512-8XLqn7dqVsRYCiYK57LN/Lq1Ge2rVRx60qamQ1RMkKYXBfk4rP6S9IrFoXWiSX8Yp2hJU+MRfzwF4NimSzlvig==
+  dependencies:
+    prop-types "^15.7.2"
+    run-event-handler-once "^1.0.2"
+
 react-bootstrap-icons@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/react-bootstrap-icons/-/react-bootstrap-icons-1.1.0.tgz#1762060dd51439b810074966eb1c62aced897d15"
@@ -5775,6 +5783,11 @@ run-async@^2.4.0:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/run-async/-/run-async-2.4.1.tgz#8440eccf99ea3e70bd409d49aab88e10c189a455"
   integrity sha512-tvVnVv01b8c1RrA6Ep7JkStj85Guv/YrMcwqYQnwjsAS2cTmmPGBBjAjpCW7RrSodNSoE2/qg9O4bceNvUuDgQ==
+
+run-event-handler-once@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/run-event-handler-once/-/run-event-handler-once-1.0.2.tgz#4d85a9bf78859fdd76eb6796637c64b60067770c"
+  integrity sha512-ZCTACJVYODJ1Ver0WMfoIN8SKmln+TgJ0W17m/Ka7PMhHwVU97XK2GkLeww6azYqlaM9UjnaWqz124F+ZtH5SA==
 
 run-queue@^1.0.0, run-queue@^1.0.3:
   version "1.0.3"

@@ -10,7 +10,6 @@ class ServiceAccount {
   constructor(secret: string = '') {
     this.accounts = [];
     this.secret = secret;
-    console.log(appPath);
   }
 
   DataExist() {

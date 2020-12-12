@@ -44,7 +44,6 @@ const reducer = (state: State = initialState, action: any) => {
       } catch (error) {
         accounts = [];
         isLogged = false;
-        console.log(error);
       }
 
       return {

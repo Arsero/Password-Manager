@@ -13,10 +13,7 @@ const AuthenticatedApp = ({ accounts }: any) => {
     <div className='container'>
       <Route path='/' render={() => <AccountList accounts={accounts} />} />
 
-      <Route
-        path={['/createAccount', '/manage/:id']}
-        render={() => <AccountForm />}
-      />
+      <Route path={['/account']} render={() => <AccountForm />} />
     </div>
   );
 };

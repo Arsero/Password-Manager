@@ -70,12 +70,13 @@ const AccountList = ({
                       style={{ marginRight: '15px' }}
                       title='Edit'
                       className='td-button'
-                      onClick={() => {
+                      onClick={(event) => {
                         SelectAccount(account.id);
-                        const location = {
-                          pathname: `/manage/${account.id}`,
-                        };
 
+                        event.preventDefault();
+                        const location = {
+                          pathname: `/account`,
+                        };
                         history.push(location);
                       }}
                     >

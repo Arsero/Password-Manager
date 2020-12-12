@@ -16,8 +16,7 @@ interface State {
   serviceAccount: ServiceAccount;
   accounts: Account[];
   isLogged: boolean;
-  selectedAccount: string;
-  account: Account;
+  selectedAccount: Account;
 }
 
 const initialState: State = {
@@ -25,8 +24,7 @@ const initialState: State = {
   serviceAccount: new ServiceAccount(),
   accounts: [],
   isLogged: false,
-  selectedAccount: '',
-  account: null,
+  selectedAccount: null,
 };
 
 const reducer = (state: State = initialState, action: any) => {

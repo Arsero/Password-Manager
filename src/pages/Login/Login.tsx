@@ -12,17 +12,13 @@ const mapDispatchToProps = (dispatch: any) => {
 const Login = ({ login }: any) => {
   const [secret, setSecret] = useState('');
   const [badPassword, setBadPassword] = useState(false);
-  const handleInputChange = (event: FormEvent<HTMLInputElement>) => {
+  const handleInputChange = (event: any) => {
     setSecret(event.currentTarget.value);
   };
 
   const handleSubmitLogin = (event: any) => {
-    try {
-      login(secret);
-      setBadPassword(false);
-    } catch (error) {
-      setBadPassword(true);
-    }
+    login(secret);
+    setBadPassword(true);
   };
 
   return (

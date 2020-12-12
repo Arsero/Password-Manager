@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Container, Table, Button, ButtonGroup } from 'react-bootstrap';
 import { Trash, PencilSquare, Files } from 'react-bootstrap-icons';
+import Account from '../../models/account';
 import './styles.css';
 
 const mapDispatchToProps = (dispatch: any) => {
@@ -45,13 +46,13 @@ const AccountList = ({
         </thead>
         <tbody>
           {accounts
-            .sort((a, b) => (a.website < b.website ? -1 : 1))
-            .map((account) => (
+            .sort((a: Account, b: Account) => (a.website < b.website ? -1 : 1))
+            .map((account: Account) => (
               <tr key={account.id}>
                 <td>{account.website}</td>
                 <td>{account.email}</td>
                 <td>{account.username}</td>
-                <td>{passwordStar(account.password.length)}</td>
+                <td>{passwordStar(8)}</td>
                 <td>{account.comment}</td>
                 <td style={{ textAlign: 'center' }}>
                   <ButtonGroup>

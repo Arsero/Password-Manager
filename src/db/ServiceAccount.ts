@@ -34,9 +34,8 @@ class ServiceAccount {
     return this.accounts;
   }
 
-  Update(id: string, account: Account) {
-    this.accounts = this.accounts.filter((a) => a.id !== id);
-    account.id = id;
+  Update(account: Account) {
+    this.accounts = this.accounts.filter((a) => a.id !== account.id);
     this.accounts.push(account);
 
     this.Commit();

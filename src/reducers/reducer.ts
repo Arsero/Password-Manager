@@ -73,7 +73,7 @@ const reducer = (state: State = initialState, action: any) => {
       break;
 
     case UPD_ACCOUNT:
-      accounts = serviceAccount.Update(action.payload.id, action.payload.value);
+      accounts = serviceAccount.Update(action.payload);
       return {
         ...state,
         accounts: accounts,

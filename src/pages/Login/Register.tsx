@@ -18,6 +18,7 @@ const Register = ({ register }: any) => {
   };
 
   const handleSubmitLogin = (event: any) => {
+    event.preventDefault();
     if (secret.length > 0) {
       register(secret);
     } else {
@@ -39,7 +40,7 @@ const Register = ({ register }: any) => {
             variant='danger'
             style={{ marginTop: '10px', marginBottom: '10px' }}
           >
-            <b>The password can't be empty !</b>
+            The password can't be empty !
           </Alert>
         )}
       </Form.Group>

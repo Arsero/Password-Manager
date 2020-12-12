@@ -17,6 +17,7 @@ const Login = ({ login }: any) => {
   };
 
   const handleSubmitLogin = (event: any) => {
+    event.preventDefault();
     login(secret);
     setBadPassword(true);
   };
@@ -37,7 +38,7 @@ const Login = ({ login }: any) => {
               variant='danger'
               style={{ marginTop: '10px', marginBottom: '10px' }}
             >
-              <b>The password is incorrect !</b>
+              The password is incorrect !
             </Alert>
           )}
         </Form.Group>

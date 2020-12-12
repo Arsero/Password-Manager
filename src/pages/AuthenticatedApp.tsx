@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import AccountList from '../components/Account/AccountList';
+import AccountList from '../components/accounts/AccountList';
+import AccountForm from '../components/accounts/AccountForm';
 import { connect } from 'react-redux';
 
 const mapStateToProps = (state: any) => {
@@ -10,28 +11,11 @@ const mapStateToProps = (state: any) => {
 const AuthenticatedApp = ({ accounts }: any) => {
   return (
     <div className='container'>
-      <Route
-        path='/accounts'
-        render={() => (
-          <AccountList
-            accounts={accounts}
-            deleteAccount={handleDeleteAccount}
-            copyPassword={handleCopyPassword}
-            selectAccount={handleSelectAccount}
-          />
-        )}
-      />
+      <Route path='/' render={() => <AccountList accounts={accounts} />} />
 
       <Route
         path={['/createAccount', '/manage/:id']}
-        render={() => (
-          <AccountForm
-            createAccount={handleCreateAccount}
-            editAccount={handleEditAccount}
-            account={selectedAccount}
-            setSelectedAccount={setSelectedAccount}
-          />
-        )}
+        render={() => <AccountForm />}
       />
     </div>
   );

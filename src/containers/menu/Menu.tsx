@@ -17,7 +17,11 @@ export const Menu = () => {
         aria-expanded={isOpen}
         onClick={() => setIsOpen(true)}
         size='sm'
-        style={{ float: 'left', marginTop: '-70px', marginLeft: '12px' }}
+        style={{
+          float: 'left',
+          marginTop: '-70px',
+          marginLeft: '12px',
+        }}
       >
         <List size={16} />
       </Button>
@@ -25,8 +29,35 @@ export const Menu = () => {
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         labelledby='menu-button'
+        width='300px'
+        height='100%'
+        style={{
+          overlay: {
+            top: '28px',
+          },
+          content: {
+            background: 'rgba(255, 255, 255, 1)',
+          },
+        }}
       >
-        <button onClick={() => setIsOpen(false)}>Close</button>
+        <Button
+          variant='outline-primary'
+          id='menu-button'
+          aria-label='Menu'
+          aria-controls='menu'
+          aria-expanded={isOpen}
+          onClick={() => setIsOpen(false)}
+          size='sm'
+          style={{
+            float: 'right',
+            marginTop: '12px',
+            marginRight: '12px',
+            paddingBottom: '3px',
+            paddingTop: 0,
+          }}
+        >
+          <b>x</b>
+        </Button>
         <Sidebar />
       </OffCanvas>
     </div>

@@ -5,7 +5,6 @@ import {
   DEL_ACCOUNT,
   UPD_ACCOUNT,
   SELECT_ACCOUNT,
-  GET_ACCOUNT,
   COPY_PWD,
 } from '../actions/actions';
 import ServiceAccount from '../db/ServiceAccount';
@@ -91,13 +90,6 @@ const reducer = (state: State = initialState, action: any) => {
       return {
         ...state,
         selectedAccount: action.payload,
-      };
-      break;
-
-    case GET_ACCOUNT:
-      return {
-        ...state,
-        account: serviceAccount.Get(action.payload),
       };
       break;
 

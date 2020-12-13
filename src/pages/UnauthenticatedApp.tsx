@@ -16,11 +16,7 @@ const UnauthenticatedApp = ({ DataExist }: any) => {
     }
   }, []);
 
-  return (
-    <div className='container app'>
-      {isRegistered ? <Login /> : <Register />}
-    </div>
-  );
+  return <div>{isRegistered ? <Login /> : <Register />}</div>;
 };
 
 export default connect(mapStateToProps)(UnauthenticatedApp);

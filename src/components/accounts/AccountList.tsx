@@ -71,7 +71,7 @@ const AccountList = ({
                       title='Edit'
                       className='td-button'
                       onClick={(event) => {
-                        SelectAccount(account.id);
+                        SelectAccount(account);
 
                         event.preventDefault();
                         const location = {

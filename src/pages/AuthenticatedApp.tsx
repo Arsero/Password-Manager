@@ -4,6 +4,7 @@ import AccountList from '../components/accounts/AccountList';
 import AccountForm from '../components/accounts/AccountForm';
 import { connect } from 'react-redux';
 import { Menu } from '../containers/menu/Menu';
+import Register from './Login/Register';
 
 const mapStateToProps = (state: any) => {
   return { accounts: state.accounts };
@@ -13,6 +14,7 @@ const AuthenticatedApp = ({ accounts }: any) => {
   return (
     <div>
       <Route
+        exact
         path='/'
         render={() => (
           <div>
@@ -22,6 +24,7 @@ const AuthenticatedApp = ({ accounts }: any) => {
         )}
       />
 
+      <Route path='/secret' render={() => <Register />} />
       <Route path={['/account']} render={() => <AccountForm />} />
     </div>
   );

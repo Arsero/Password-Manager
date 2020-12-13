@@ -94,7 +94,7 @@ const reducer = (state: State = initialState, action: any) => {
       break;
 
     case COPY_PWD:
-      let pwd = accounts.find((a) => a.id === action.payload).password;
+      let pwd = state.accounts.find((a) => a.id === action.payload).password;
       if (pwd !== undefined) {
         navigator.clipboard.writeText(pwd);
       }

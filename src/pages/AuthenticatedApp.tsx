@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import AccountList from '../components/accounts/AccountList';
 import AccountForm from '../components/accounts/AccountForm';
 import { connect } from 'react-redux';
+import { Menu } from '../containers/menu/Menu';
 
 const mapStateToProps = (state: any) => {
   return { accounts: state.accounts };
@@ -10,8 +11,16 @@ const mapStateToProps = (state: any) => {
 
 const AuthenticatedApp = ({ accounts }: any) => {
   return (
-    <div className='container'>
-      <Route path='/' render={() => <AccountList accounts={accounts} />} />
+    <div>
+      <Route
+        path='/'
+        render={() => (
+          <div>
+            <Menu />
+            <AccountList accounts={accounts} />
+          </div>
+        )}
+      />
 
       <Route path={['/account']} render={() => <AccountForm />} />
     </div>

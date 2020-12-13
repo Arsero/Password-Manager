@@ -46,7 +46,7 @@ const AccountForm = ({
 
   const handleSubmit = (event) => {
     if (account.comment.length === 0) {
-      setAccount({ ...account, comment: 'Nothing' });
+      setAccount({ ...account, comment: 'None' });
     }
 
     if (selectedAccount) {

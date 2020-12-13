@@ -7,6 +7,10 @@ import { List } from 'react-bootstrap-icons';
 export const Menu = () => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const Close = () => {
+    setIsOpen(false);
+  };
+
   return (
     <div>
       <Button
@@ -58,7 +62,7 @@ export const Menu = () => {
         >
           <b>x</b>
         </Button>
-        <Sidebar />
+        <Sidebar Close={Close} />
       </OffCanvas>
     </div>
   );

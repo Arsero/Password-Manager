@@ -1,7 +1,12 @@
-import React, { FormEvent, useState } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Container, Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert } from 'react-bootstrap';
+import { useHistory } from 'react-router-dom';
 import './styles.css';
+
+const mapStateToProps = (state: any) => {
+  return { isLogged: state.isLogged };
+};
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
@@ -10,7 +15,8 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-const Register = ({ register }: any) => {
+const Register = ({ register, isLogged }: any) => {
+  const history = useHistory();
   const [secret, setSecret] = useState('');
   const [badPassword, setBadPassword] = useState(false);
   const handleInputChange = (event: any) => {
@@ -20,7 +26,15 @@ const Register = ({ register }: any) => {
   const handleSubmitLogin = (event: any) => {
     event.preventDefault();
     if (secret.length > 0) {
+      const isWasLogged = isLogged;
       register(secret);
+
+      if (isWasLogged) {
+        const location = {
+          pathname: '/',
+        };
+        history.push(location);
+      }
     } else {
       setBadPassword(true);
     }
@@ -55,4 +69,4 @@ const Register = ({ register }: any) => {
   );
 };
 
-export default connect(null, mapDispatchToProps)(Register);
+export default connect(mapStateToProps, mapDispatchToProps)(Register);

@@ -112,7 +112,7 @@ const AccountForm = ({
         </Form.Group>
         <Button
           type='button'
-          variant='info'
+          variant='outline-primary'
           block
           style={{ marginBottom: '15px' }}
           onClick={() => {

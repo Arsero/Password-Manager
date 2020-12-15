@@ -33,7 +33,7 @@ export const Menu = () => {
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         labelledby='menu-button'
-        width='300px'
+        width='350px'
         height='100%'
         style={{
           overlay: {

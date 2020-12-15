@@ -1,22 +1,17 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { Container, Button, Form } from 'react-bootstrap';
-import './styles.css';
+import { Container, Button, Form, Row } from 'react-bootstrap';
 
 export const Sidebar = ({ Close }: any) => {
   const history = useHistory();
 
   return (
-    <Container
-      style={{
-        margin: '50px',
-      }}
-    >
+    <Container style={{ width: '50%', marginTop: '90%' }}>
       <Form>
-        <Form.Group>
+        <Row>
           <Button
             variant='outline-light'
-            style={{ marginBottom: '30px', marginRight: '50px' }}
+            style={{ marginBottom: '30px', width: '100%' }}
             onClick={(event) => {
               Close();
               event.preventDefault();
@@ -28,9 +23,11 @@ export const Sidebar = ({ Close }: any) => {
           >
             Add an account
           </Button>
+        </Row>
+        <Row>
           <Button
             variant='outline-light'
-            style={{ marginLeft: '5px' }}
+            style={{ width: '100%' }}
             onClick={(event) => {
               Close();
               event.preventDefault();
@@ -42,7 +39,7 @@ export const Sidebar = ({ Close }: any) => {
           >
             Update secret
           </Button>
-        </Form.Group>
+        </Row>
       </Form>
     </Container>
   );

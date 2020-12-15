@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { Form, Container, Button } from 'react-bootstrap';
+import { Form, Container, Button, Row, Col } from 'react-bootstrap';
 import CryptUtils from '../../utils/CryptUtils';
 import Account from '../../models/account';
 import './styles.css';
@@ -102,28 +102,33 @@ const AccountForm = ({
         </Form.Group>
         <Form.Group controlId='password'>
           <Form.Label>Password</Form.Label>
-          <Form.Control
-            type='password'
-            name='password'
-            placeholder='Enter a password'
-            onChange={handleInputChange}
-            value={account.password}
-          />
+          <Row>
+            <Col>
+              <Form.Control
+                type='password'
+                name='password'
+                placeholder='Enter a password'
+                onChange={handleInputChange}
+                value={account.password}
+              />
+            </Col>
+            <Col>
+              <Button
+                type='button'
+                variant='outline-dark'
+                block
+                onClick={() => {
+                  setAccount({
+                    ...account,
+                    password: CryptUtils.generatePassword(8),
+                  });
+                }}
+              >
+                Generate password
+              </Button>
+            </Col>
+          </Row>
         </Form.Group>
-        <Button
-          type='button'
-          variant='outline-dark'
-          block
-          style={{ marginBottom: '15px' }}
-          onClick={() => {
-            setAccount({
-              ...account,
-              password: CryptUtils.generatePassword(8),
-            });
-          }}
-        >
-          Generate password
-        </Button>
         <Form.Group controlId='comment'>
           <Form.Label>Comment</Form.Label>
           <Form.Control
@@ -135,30 +140,31 @@ const AccountForm = ({
             value={account.comment}
           />
         </Form.Group>
-        <Button
-          type='submit'
-          variant='dark'
-          style={{ margin: '25px auto' }}
-          block
-        >
-          Submit
-        </Button>
-        <Button
-          variant='outline-danger'
-          type='button'
-          block
-          onClick={(event) => {
-            SetSelectedAccount(null);
+        <Row style={{ marginTop: '15px' }}>
+          <Col>
+            <Button type='submit' variant='dark' block>
+              Add account
+            </Button>
+          </Col>
+          <Col>
+            <Button
+              variant='outline-danger'
+              type='button'
+              block
+              onClick={(event) => {
+                SetSelectedAccount(null);
 
-            event.preventDefault();
-            const location = {
-              pathname: '/',
-            };
-            history.push(location);
-          }}
-        >
-          Cancel
-        </Button>
+                event.preventDefault();
+                const location = {
+                  pathname: '/',
+                };
+                history.push(location);
+              }}
+            >
+              Cancel
+            </Button>
+          </Col>
+        </Row>
       </Form>
     </Container>
   );

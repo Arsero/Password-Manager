@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
+import { PersonPlusFill } from 'react-bootstrap-icons';
 import './styles.css';
 
 const mapStateToProps = (state: any) => {
@@ -42,7 +43,15 @@ const Register = ({ register, isLogged }: any) => {
   return (
     <Form onSubmit={handleSubmitLogin} className='form-center'>
       <Form.Group controlId='password'>
-        <Form.Label>Register</Form.Label>
+        <div
+          style={{
+            margin: '0 auto',
+            marginBottom: '25%',
+            textAlign: 'center',
+          }}
+        >
+          <PersonPlusFill size={120} />
+        </div>
         <Form.Control
           type='password'
           placeholder='Enter your password'

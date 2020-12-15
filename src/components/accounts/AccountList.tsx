@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Container, Table, Button, ButtonGroup } from 'react-bootstrap';
+import { Container, Table, Button } from 'react-bootstrap';
 import { Trash, PencilSquare, Files } from 'react-bootstrap-icons';
 import Account from '../../models/account';
 import './styles.css';
@@ -16,14 +16,6 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-const passwordStar = (lenght: number) => {
-  let result = '';
-  for (let i = 0; i < lenght; i++) {
-    result += '*';
-  }
-  return result;
-};
-
 const AccountList = ({
   accounts,
   DeleteAccount,
@@ -32,7 +24,7 @@ const AccountList = ({
 }: any) => {
   const history = useHistory();
   return (
-    <Container style={{ marginTop: '5em' }}>
+    <Container style={{ marginTop: '5em', width: '80%', minWidth: '800px' }}>
       <Table responsive hover>
         <thead>
           <tr>

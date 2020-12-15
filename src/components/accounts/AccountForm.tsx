@@ -143,7 +143,11 @@ const AccountForm = ({
         <Row style={{ marginTop: '15px' }}>
           <Col>
             <Button type='submit' variant='dark' block>
-              Add account
+              {selectedAccount ? (
+                <span>Edit account</span>
+              ) : (
+                <span>Add account</span>
+              )}
             </Button>
           </Col>
           <Col>

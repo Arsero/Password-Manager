@@ -68,7 +68,7 @@ const AccountForm = ({
   };
 
   return (
-    <Container style={{ marginTop: '5em' }}>
+    <Container style={{ marginTop: '5em', width: '70%', maxWidth: '800px' }}>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId='website'>
           <Form.Label>Website</Form.Label>
@@ -112,7 +112,7 @@ const AccountForm = ({
         </Form.Group>
         <Button
           type='button'
-          variant='outline-primary'
+          variant='outline-dark'
           block
           style={{ marginBottom: '15px' }}
           onClick={() => {
@@ -144,7 +144,7 @@ const AccountForm = ({
           Submit
         </Button>
         <Button
-          variant='danger'
+          variant='outline-danger'
           type='button'
           block
           onClick={(event) => {

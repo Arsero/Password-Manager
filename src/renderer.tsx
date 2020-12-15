@@ -6,6 +6,7 @@ import store from './store';
 import App from './App';
 import { Header } from './components/Header/Header';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './index.css';
 
 ReactDOM.render(
   <HashRouter>

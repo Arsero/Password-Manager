@@ -1,4 +1,5 @@
-import React, { FormEvent, useState } from 'react';
+import React, { useState } from 'react';
+import { Person } from 'react-bootstrap-icons';
 import { connect } from 'react-redux';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
 import './styles.css';
@@ -26,7 +27,9 @@ const Login = ({ login }: any) => {
     <Container>
       <Form onSubmit={handleSubmitLogin} className='form-center'>
         <Form.Group controlId='password'>
-          <Form.Label>Login</Form.Label>
+          <div style={{ margin: 'auto', marginBottom: '30%' }}>
+            <Person size={120} />
+          </div>
           <Form.Control
             type='password'
             placeholder='Enter your password'

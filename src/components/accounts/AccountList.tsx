@@ -33,13 +33,12 @@ const AccountList = ({
   const history = useHistory();
   return (
     <Container style={{ marginTop: '5em' }}>
-      <Table responsive>
+      <Table responsive hover>
         <thead>
           <tr>
             <th>Website</th>
             <th>Email address</th>
             <th>Username</th>
-            <th>Password</th>
             <th>Comment</th>
             <th style={{ textAlign: 'center' }}>Actions</th>
           </tr>
@@ -52,45 +51,54 @@ const AccountList = ({
                 <td>{account.website}</td>
                 <td>{account.email}</td>
                 <td>{account.username}</td>
-                <td>{passwordStar(8)}</td>
                 <td>{account.comment}</td>
                 <td style={{ textAlign: 'center' }}>
-                  <ButtonGroup>
-                    <Button
-                      style={{ marginRight: '15px' }}
-                      variant='dark'
-                      title='Copy'
-                      className='td-button'
-                      onClick={() => CopyPassword(account.id)}
-                    >
-                      <Files size={25} />
-                    </Button>
-                    <Button
-                      variant='dark'
-                      style={{ marginRight: '15px' }}
-                      title='Edit'
-                      className='td-button'
-                      onClick={(event) => {
-                        SelectAccount(account);
+                  <Button
+                    style={{
+                      marginRight: '10px',
+                      padding: '5px',
+                      paddingTop: '3px',
+                    }}
+                    variant='outline-dark'
+                    title='Copy'
+                    className='td-button'
+                    size='sm'
+                    onClick={() => CopyPassword(account.id)}
+                  >
+                    <Files size={18} />
+                  </Button>
+                  <Button
+                    variant='outline-dark'
+                    style={{
+                      marginRight: '10px',
+                      padding: '5px',
+                      paddingTop: '3px',
+                    }}
+                    title='Edit'
+                    className='td-button'
+                    size='sm'
+                    onClick={(event) => {
+                      SelectAccount(account);
 
-                        event.preventDefault();
-                        const location = {
-                          pathname: `/account`,
-                        };
-                        history.push(location);
-                      }}
-                    >
-                      <PencilSquare size={25} />
-                    </Button>
-                    <Button
-                      variant='danger'
-                      title='Delete'
-                      className='td-button'
-                      onClick={() => DeleteAccount(account.id)}
-                    >
-                      <Trash size={25} />
-                    </Button>
-                  </ButtonGroup>
+                      event.preventDefault();
+                      const location = {
+                        pathname: `/account`,
+                      };
+                      history.push(location);
+                    }}
+                  >
+                    <PencilSquare size={18} />
+                  </Button>
+                  <Button
+                    variant='outline-danger'
+                    size='sm'
+                    title='Delete'
+                    className='td-button'
+                    style={{ padding: '5px', paddingTop: '3px' }}
+                    onClick={() => DeleteAccount(account.id)}
+                  >
+                    <Trash size={18} />
+                  </Button>
                 </td>
               </tr>
             ))}

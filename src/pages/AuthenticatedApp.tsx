@@ -25,7 +25,7 @@ const AuthenticatedApp = ({ accounts }: any) => {
       />
 
       <Route path='/secret' render={() => <Register />} />
-      <Route path={['/account']} render={() => <AccountForm />} />
+      <Route path={'/account'} render={() => <AccountForm />} />
     </div>
   );
 };

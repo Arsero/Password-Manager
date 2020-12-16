@@ -101,13 +101,32 @@ npm run make *not available*
 ### Login page
 
 <p align="center">
-    <img src="resources/images/login.png" alt="Image no available...">
+    <img src="resources/images/login.png" style="border: 2px solid black" alt="Image no available...">
 </p>
+
 ### Register page
+
+<p align="center">
+    <img src="resources/images/register.png" style="border: 2px solid black" alt="Image no available...">
+</p>
 
 ### Main page
 
+<p align="center">
+    <img src="resources/images/main-page.png" style="border: 2px solid black" alt="Image no available...">
+</p>
+
 ### Account form
+
+<p align="center">
+    <img src="resources/images/form.png" style="border: 2px solid black" alt="Image no available...">
+</p>
+
+### Notify
+
+<p align="center">
+    <img src="resources/images/notify.png" style="border: 2px solid black" alt="Image no available...">
+</p>
 
 <!-- ROADMAP -->
 

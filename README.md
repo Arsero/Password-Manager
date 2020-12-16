@@ -18,7 +18,6 @@
 <br />
 <p align="center">
     <img src="resources/icons/shield.png" alt="Logo" width="200" height="200">
-  </a>
 
   <h3 align="center">acryptex</h3>
 
@@ -101,6 +100,9 @@ npm run make *not available*
 
 ### Login page
 
+<p align="center">
+    <img src="resources/images/login.png" alt="Image no available..." width='50%'>
+</p>
 ### Register page
 
 ### Main page

@@ -1,34 +1,21 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import * as actions from '../../actions/actions';
 import { Form, Container, Button, Row, Col } from 'react-bootstrap';
 import { Notify } from '../../containers/notifications/Notification';
 import CryptUtils from '../../utils/CryptUtils';
 import Account from '../../models/account';
+import State from '../../models/state';
 import './styles.css';
 
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    AddAccount: (account: Account) =>
-      dispatch({ type: 'ADD_ACCOUNT', payload: account }),
-    UpdateAccount: (account: Account) =>
-      dispatch({ type: 'UPD_ACCOUNT', payload: account }),
-    SetSelectedAccount: (account: Account) =>
-      dispatch({ type: 'SELECT_ACCOUNT', payload: account }),
-  };
-};
-
-const mapStateToProps = (state: any) => {
-  return { selectedAccount: state.selectedAccount };
-};
-
-const AccountForm = ({
-  selectedAccount,
-  AddAccount,
-  UpdateAccount,
-  SetSelectedAccount,
-}: any) => {
+const AccountForm = () => {
   const history = useHistory();
+  const selectedAccount: Account = useSelector(
+    (state: State) => state.selectedAccount
+  );
+  const dispatch = useDispatch();
+
   const initializeForm = () => {
     if (selectedAccount) return selectedAccount;
     else {
@@ -51,10 +38,10 @@ const AccountForm = ({
     }
 
     if (selectedAccount) {
-      UpdateAccount(account);
+      dispatch(actions.UpdateAccount(account));
       Notify('✔️ Account updated !');
     } else {
-      AddAccount(account);
+      dispatch(actions.AddAccount(account));
       Notify('✔️ Account added !');
     }
 
@@ -159,7 +146,7 @@ const AccountForm = ({
               type='button'
               block
               onClick={(event) => {
-                SetSelectedAccount(null);
+                dispatch(actions.SetSelectedAccount(null));
 
                 event.preventDefault();
                 const location = {
@@ -177,4 +164,4 @@ const AccountForm = ({
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AccountForm);
+export default AccountForm;

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PersonFill } from 'react-bootstrap-icons';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import * as actions from '../../actions/actions';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
 import './styles.css';
 
@@ -10,16 +11,17 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-const Login = ({ login }: any) => {
+const Login = () => {
   const [secret, setSecret] = useState('');
   const [badPassword, setBadPassword] = useState(false);
+  const dispatch = useDispatch();
   const handleInputChange = (event: any) => {
     setSecret(event.currentTarget.value);
   };
 
   const handleSubmitLogin = (event: any) => {
     event.preventDefault();
-    login(secret);
+    dispatch(actions.Login(secret));
     setBadPassword(true);
   };
 
@@ -63,4 +65,4 @@ const Login = ({ login }: any) => {
   );
 };
 
-export default connect(null, mapDispatchToProps)(Login);
+export default Login;

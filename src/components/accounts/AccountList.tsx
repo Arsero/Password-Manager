@@ -1,29 +1,21 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Container, Table, Button } from 'react-bootstrap';
 import { Trash, PencilSquare, Files } from 'react-bootstrap-icons';
 import { Notify } from '../../containers/notifications/Notification';
 import Account from '../../models/account';
+import * as actions from '../../actions/actions';
 import './styles.css';
 
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    DeleteAccount: (id: string) =>
-      dispatch({ type: 'DEL_ACCOUNT', payload: id }),
-    CopyPassword: (id: string) => dispatch({ type: 'COPY_PWD', payload: id }),
-    SelectAccount: (account: Account) =>
-      dispatch({ type: 'SELECT_ACCOUNT', payload: account }),
-  };
-};
+interface Props {
+  accounts: Account[];
+}
 
-const AccountList = ({
-  accounts,
-  DeleteAccount,
-  CopyPassword,
-  SelectAccount,
-}: any) => {
+const AccountList: React.FC<Props> = ({ accounts }) => {
   const history = useHistory();
+  const dispatch = useDispatch();
+
   return (
     <Container style={{ marginTop: '5em', width: '80%', minWidth: '800px' }}>
       <Table responsive hover>
@@ -57,7 +49,7 @@ const AccountList = ({
                     className='td-button'
                     size='sm'
                     onClick={() => {
-                      CopyPassword(account.id);
+                      dispatch(actions.CopyPassword(account.id));
                       Notify('✔️ Password copied !');
                     }}
                   >
@@ -74,7 +66,7 @@ const AccountList = ({
                     className='td-button'
                     size='sm'
                     onClick={(event) => {
-                      SelectAccount(account);
+                      dispatch(actions.SelectAccount(account));
 
                       event.preventDefault();
                       const location = {
@@ -92,7 +84,7 @@ const AccountList = ({
                     className='td-button'
                     style={{ padding: '5px', paddingTop: '3px' }}
                     onClick={() => {
-                      DeleteAccount(account.id);
+                      dispatch(actions.DeleteAccount(account.id));
                       Notify('✔️ Account deleted !');
                     }}
                   >
@@ -107,4 +99,4 @@ const AccountList = ({
   );
 };
 
-export default connect(null, mapDispatchToProps)(AccountList);
+export default AccountList;

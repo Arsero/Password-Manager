@@ -30,7 +30,7 @@ export const DeleteAccount = (id: string) => ({
   payload: id,
 });
 
-export const SetSelectedAccount = (account: Account) => ({
+export const SelectAccount = (account: Account) => ({
   type: SELECT_ACCOUNT,
   payload: account,
 });

@@ -100,31 +100,31 @@ npm run make *not available*
 
 ### Login page
 
-<p align="center" style="border: 2px solid black">
+<p align="center">
     <img src="resources/images/login.png" alt="Image no available...">
 </p>
 
 ### Register page
 
-<p align="center" style="border: 2px solid black">
+<p align="center">
     <img src="resources/images/register.png" alt="Image no available...">
 </p>
 
 ### Main page
 
-<p align="center" style="border: 2px solid black">
+<p align="center">
     <img src="resources/images/main.png"  alt="Image no available...">
 </p>
 
 ### Account form
 
-<p align="center" style="border: 2px solid black">
+<p align="center">
     <img src="resources/images/form.png" alt="Image no available...">
 </p>
 
 ### Notify
 
-<p align="center" style="border: 2px solid black">
+<p align="center">
     <img src="resources/images/notify.png" alt="Image no available...">
 </p>
 
@@ -132,7 +132,7 @@ npm run make *not available*
 
 ## Roadmap
 
-See the [open issues](https://github.com/Arsero/acryptex_old/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/Arsero/acryptex/issues) for a list of proposed features (and known issues).
 
 - Add splash screen
 - Add OAuth to store file in dropbox / drive / ...

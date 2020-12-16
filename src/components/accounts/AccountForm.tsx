@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { Form, Container, Button, Row, Col } from 'react-bootstrap';
+import { Notify } from '../../containers/notifications/Notification';
 import CryptUtils from '../../utils/CryptUtils';
 import Account from '../../models/account';
 import './styles.css';
@@ -51,8 +52,10 @@ const AccountForm = ({
 
     if (selectedAccount) {
       UpdateAccount(account);
+      Notify('✔️ Account updated !');
     } else {
       AddAccount(account);
+      Notify('✔️ Account added !');
     }
 
     event.preventDefault();

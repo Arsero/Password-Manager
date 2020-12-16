@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
 import { PersonPlusFill } from 'react-bootstrap-icons';
+import { Notify } from '../../containers/notifications/Notification';
 import './styles.css';
 
 const mapStateToProps = (state: any) => {
@@ -31,10 +32,13 @@ const Register = ({ register, isLogged }: any) => {
       register(secret);
 
       if (isWasLogged) {
+        Notify('✔️ Secret updated !');
         const location = {
           pathname: '/',
         };
         history.push(location);
+      } else {
+        Notify('✔️ Secret saved !');
       }
     } else {
       setBadPassword(true);

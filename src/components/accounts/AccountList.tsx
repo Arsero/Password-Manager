@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { Container, Table, Button } from 'react-bootstrap';
 import { Trash, PencilSquare, Files } from 'react-bootstrap-icons';
+import { Notify } from '../../containers/notifications/Notification';
 import Account from '../../models/account';
 import './styles.css';
 
@@ -55,7 +56,10 @@ const AccountList = ({
                     title='Copy'
                     className='td-button'
                     size='sm'
-                    onClick={() => CopyPassword(account.id)}
+                    onClick={() => {
+                      CopyPassword(account.id);
+                      Notify('✔️ Password copied !');
+                    }}
                   >
                     <Files size={18} />
                   </Button>
@@ -87,7 +91,10 @@ const AccountList = ({
                     title='Delete'
                     className='td-button'
                     style={{ padding: '5px', paddingTop: '3px' }}
-                    onClick={() => DeleteAccount(account.id)}
+                    onClick={() => {
+                      DeleteAccount(account.id);
+                      Notify('✔️ Account deleted !');
+                    }}
                   >
                     <Trash size={18} />
                   </Button>

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import TitleBar from 'frameless-titlebar';
 import { remote } from 'electron';
+import image from '../../../resources/icons/shield.png';
 
 const currentWindow = remote.getCurrentWindow();
 
@@ -42,6 +43,7 @@ export const Header = () => {
         disableMinimize={false}
         disableMaximize={false}
         maximized={maximized}
+        iconSrc={image}
       />
     </div>
   );

@@ -68,6 +68,7 @@ const AccountForm = () => {
             placeholder='Enter a website'
             onChange={handleInputChange}
             value={account.website}
+            required
           />
         </Form.Group>
         <Form.Group controlId='email'>
@@ -78,6 +79,7 @@ const AccountForm = () => {
             placeholder='name@example.com'
             onChange={handleInputChange}
             value={account.email}
+            required
           />
         </Form.Group>
         <Form.Group controlId='username'>
@@ -88,6 +90,7 @@ const AccountForm = () => {
             placeholder='Enter a username'
             onChange={handleInputChange}
             value={account.username}
+            required
           />
         </Form.Group>
         <Form.Group controlId='password'>
@@ -100,6 +103,7 @@ const AccountForm = () => {
                 placeholder='Enter a password'
                 onChange={handleInputChange}
                 value={account.password}
+                required
               />
             </Col>
             <Col>

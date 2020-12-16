@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import Login from './Login/Login';
 import Register from './Login/Register';
+import State from '../models/state';
 
-const mapStateToProps = (state: any) => {
-  return { DataExist: state.serviceAccount.DataExist };
-};
-
-const UnauthenticatedApp = ({ DataExist }: any) => {
+const UnauthenticatedApp = () => {
   const [isRegistered, setIsRegistered] = useState(false);
+  const isDataExist = useSelector((state: State) => state.isDataExists);
 
   useEffect(() => {
-    if (DataExist()) {
+    if (isDataExist) {
       setIsRegistered(true);
     }
   }, []);
@@ -19,4 +17,4 @@ const UnauthenticatedApp = ({ DataExist }: any) => {
   return <div>{isRegistered ? <Login /> : <Register />}</div>;
 };
 
-export default connect(mapStateToProps)(UnauthenticatedApp);
+export default UnauthenticatedApp;

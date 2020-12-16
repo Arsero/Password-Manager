@@ -1,22 +1,7 @@
-import {
-  LOGIN,
-  REGISTER,
-  ADD_ACCOUNT,
-  DEL_ACCOUNT,
-  UPD_ACCOUNT,
-  SELECT_ACCOUNT,
-  COPY_PWD,
-} from '../actions/actions';
+import * as actions from '../actions/actions';
 import ServiceAccount from '../db/ServiceAccount';
 import Account from '../models/account';
-
-interface State {
-  secret: string;
-  serviceAccount: ServiceAccount;
-  accounts: Account[];
-  isLogged: boolean;
-  selectedAccount: Account;
-}
+import State from '../models/state';
 
 const initialState: State = {
   secret: '',
@@ -24,14 +9,18 @@ const initialState: State = {
   accounts: [],
   isLogged: false,
   selectedAccount: null,
+  isDataExists: new ServiceAccount().DataExist(),
 };
+
+const update = (state: State, mutations: any) =>
+  Object.assign({}, state, mutations);
 
 const reducer = (state: State = initialState, action: any) => {
   const serviceAccount = state.serviceAccount;
   let accounts: Account[];
 
   switch (action.type) {
-    case LOGIN:
+    case actions.LOGIN:
       let isLogged;
 
       try {
@@ -43,67 +32,61 @@ const reducer = (state: State = initialState, action: any) => {
         isLogged = false;
       }
 
-      return {
-        ...state,
+      state = update(state, {
         isLogged: isLogged,
         secret: action.payload,
         accounts: accounts,
-      };
+      });
+
       break;
 
-    case REGISTER:
+    case actions.REGISTER:
       serviceAccount.secret = action.payload;
       serviceAccount.Commit();
-      return {
+
+      state = update(state, {
         ...state,
         isLogged: true,
         secret: action.payload,
-      };
+      });
+
       break;
 
-    case ADD_ACCOUNT:
+    case actions.ADD_ACCOUNT:
       accounts = serviceAccount.Add(action.payload);
-      return {
-        ...state,
-        accounts: accounts,
-      };
+      state = update(state, { accounts: accounts });
       break;
 
-    case UPD_ACCOUNT:
+    case actions.UPD_ACCOUNT:
       accounts = serviceAccount.Update(action.payload);
-      return {
-        ...state,
-        accounts: accounts,
-        selectedAccount: null,
-      };
+      state = update(state, { accounts: accounts, selectedAccount: null });
       break;
 
-    case DEL_ACCOUNT:
+    case actions.DEL_ACCOUNT:
       accounts = serviceAccount.Delete(action.payload);
-      return {
-        ...state,
-        accounts: accounts,
-      };
+      state = update(state, { accounts: accounts });
       break;
 
-    case SELECT_ACCOUNT:
+    case actions.SELECT_ACCOUNT:
+      state = update(state, { selectedAccount: action.payload });
       return {
         ...state,
         selectedAccount: action.payload,
       };
       break;
 
-    case COPY_PWD:
+    case actions.COPY_PWD:
       let pwd = state.accounts.find((a) => a.id === action.payload).password;
       if (pwd !== undefined) {
         navigator.clipboard.writeText(pwd);
       }
+
       return state;
-      break;
 
     default:
-      return state;
   }
+
+  return state;
 };
 
 export default reducer;

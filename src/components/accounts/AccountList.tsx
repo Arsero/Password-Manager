@@ -1,45 +1,29 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { Container, Table, Button, ButtonGroup } from 'react-bootstrap';
+import { Container, Table, Button } from 'react-bootstrap';
 import { Trash, PencilSquare, Files } from 'react-bootstrap-icons';
+import { Notify } from '../../containers/notifications/Notification';
 import Account from '../../models/account';
+import * as actions from '../../actions/actions';
 import './styles.css';
 
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    DeleteAccount: (id: string) =>
-      dispatch({ type: 'DEL_ACCOUNT', payload: id }),
-    CopyPassword: (id: string) => dispatch({ type: 'COPY_PWD', payload: id }),
-    SelectAccount: (account: Account) =>
-      dispatch({ type: 'SELECT_ACCOUNT', payload: account }),
-  };
-};
+interface Props {
+  accounts: Account[];
+}
 
-const passwordStar = (lenght: number) => {
-  let result = '';
-  for (let i = 0; i < lenght; i++) {
-    result += '*';
-  }
-  return result;
-};
-
-const AccountList = ({
-  accounts,
-  DeleteAccount,
-  CopyPassword,
-  SelectAccount,
-}: any) => {
+const AccountList: React.FC<Props> = ({ accounts }) => {
   const history = useHistory();
+  const dispatch = useDispatch();
+
   return (
-    <Container style={{ marginTop: '5em' }}>
-      <Table responsive>
+    <Container style={{ marginTop: '5em', width: '80%', minWidth: '800px' }}>
+      <Table responsive hover>
         <thead>
           <tr>
             <th>Website</th>
             <th>Email address</th>
             <th>Username</th>
-            <th>Password</th>
             <th>Comment</th>
             <th style={{ textAlign: 'center' }}>Actions</th>
           </tr>
@@ -52,45 +36,60 @@ const AccountList = ({
                 <td>{account.website}</td>
                 <td>{account.email}</td>
                 <td>{account.username}</td>
-                <td>{passwordStar(8)}</td>
                 <td>{account.comment}</td>
                 <td style={{ textAlign: 'center' }}>
-                  <ButtonGroup>
-                    <Button
-                      style={{ marginRight: '15px' }}
-                      variant='dark'
-                      title='Copy'
-                      className='td-button'
-                      onClick={() => CopyPassword(account.id)}
-                    >
-                      <Files size={25} />
-                    </Button>
-                    <Button
-                      variant='dark'
-                      style={{ marginRight: '15px' }}
-                      title='Edit'
-                      className='td-button'
-                      onClick={(event) => {
-                        SelectAccount(account);
+                  <Button
+                    style={{
+                      marginRight: '10px',
+                      padding: '5px',
+                      paddingTop: '3px',
+                    }}
+                    variant='outline-dark'
+                    title='Copy'
+                    className='td-button'
+                    size='sm'
+                    onClick={() => {
+                      dispatch(actions.CopyPassword(account.id));
+                      Notify('✔️ Password copied !');
+                    }}
+                  >
+                    <Files size={18} />
+                  </Button>
+                  <Button
+                    variant='outline-dark'
+                    style={{
+                      marginRight: '10px',
+                      padding: '5px',
+                      paddingTop: '3px',
+                    }}
+                    title='Edit'
+                    className='td-button'
+                    size='sm'
+                    onClick={(event) => {
+                      dispatch(actions.SelectAccount(account));
 
-                        event.preventDefault();
-                        const location = {
-                          pathname: `/account`,
-                        };
-                        history.push(location);
-                      }}
-                    >
-                      <PencilSquare size={25} />
-                    </Button>
-                    <Button
-                      variant='danger'
-                      title='Delete'
-                      className='td-button'
-                      onClick={() => DeleteAccount(account.id)}
-                    >
-                      <Trash size={25} />
-                    </Button>
-                  </ButtonGroup>
+                      event.preventDefault();
+                      const location = {
+                        pathname: `/account`,
+                      };
+                      history.push(location);
+                    }}
+                  >
+                    <PencilSquare size={18} />
+                  </Button>
+                  <Button
+                    variant='outline-danger'
+                    size='sm'
+                    title='Delete'
+                    className='td-button'
+                    style={{ padding: '5px', paddingTop: '3px' }}
+                    onClick={() => {
+                      dispatch(actions.DeleteAccount(account.id));
+                      Notify('✔️ Account deleted !');
+                    }}
+                  >
+                    <Trash size={18} />
+                  </Button>
                 </td>
               </tr>
             ))}
@@ -100,4 +99,4 @@ const AccountList = ({
   );
 };
 
-export default connect(null, mapDispatchToProps)(AccountList);
+export default AccountList;

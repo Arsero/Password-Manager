@@ -1,5 +1,7 @@
-import React, { FormEvent, useState } from 'react';
-import { connect } from 'react-redux';
+import React, { useState } from 'react';
+import { PersonFill } from 'react-bootstrap-icons';
+import { useDispatch } from 'react-redux';
+import * as actions from '../../actions/actions';
 import { Container, Form, Button, Alert } from 'react-bootstrap';
 import './styles.css';
 
@@ -9,16 +11,17 @@ const mapDispatchToProps = (dispatch: any) => {
   };
 };
 
-const Login = ({ login }: any) => {
+const Login = () => {
   const [secret, setSecret] = useState('');
   const [badPassword, setBadPassword] = useState(false);
+  const dispatch = useDispatch();
   const handleInputChange = (event: any) => {
     setSecret(event.currentTarget.value);
   };
 
   const handleSubmitLogin = (event: any) => {
     event.preventDefault();
-    login(secret);
+    dispatch(actions.Login(secret));
     setBadPassword(true);
   };
 
@@ -26,7 +29,15 @@ const Login = ({ login }: any) => {
     <Container>
       <Form onSubmit={handleSubmitLogin} className='form-center'>
         <Form.Group controlId='password'>
-          <Form.Label>Login</Form.Label>
+          <div
+            style={{
+              margin: '0 auto',
+              marginBottom: '25%',
+              textAlign: 'center',
+            }}
+          >
+            <PersonFill size={120} />
+          </div>
           <Form.Control
             type='password'
             placeholder='Enter your password'
@@ -54,4 +65,4 @@ const Login = ({ login }: any) => {
   );
 };
 
-export default connect(null, mapDispatchToProps)(Login);
+export default Login;

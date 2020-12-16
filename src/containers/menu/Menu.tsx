@@ -14,7 +14,7 @@ export const Menu = () => {
   return (
     <div>
       <Button
-        variant='outline-primary'
+        variant='outline-dark'
         id='menu-button'
         aria-label='Menu'
         aria-controls='menu'
@@ -33,19 +33,19 @@ export const Menu = () => {
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         labelledby='menu-button'
-        width='300px'
+        width='350px'
         height='100%'
         style={{
           overlay: {
             top: '28px',
           },
           content: {
-            background: 'rgba(255, 255, 255, 1)',
+            background: 'rgba(5, 5, 5, 0.85)',
           },
         }}
       >
         <Button
-          variant='outline-primary'
+          variant='outline-light'
           id='menu-button'
           aria-label='Menu'
           aria-controls='menu'

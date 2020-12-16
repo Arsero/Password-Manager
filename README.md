@@ -17,9 +17,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/Arsero/acryptex_old">
     <img src="resources/icons/shield.png" alt="Logo" width="200" height="200">
-  </a>
 
   <h3 align="center">acryptex</h3>
 
@@ -37,6 +35,7 @@
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
+- [Screenshots](#screenshots)
 - [Roadmap](#roadmap)
 - [Contributing](#contributing)
 - [License](#license)
@@ -44,16 +43,22 @@
 
 ## About The Project
 
-![Simple Password Manager][product-screenshot]
 This is a password manager. Store your accounts information into a crypted local file. Lock/unlock this file with a secret password.
 
 ### Built with
 
+- [Electron](https://www.electronjs.org/)
 - [Electron-forge](https://github.com/electron-userland/electron-forge)
 - [Node](https://nodejs.org/en/about/)
 - [React](https://github.com/facebook/react)
+- [Typescript](https://www.typescriptlang.org/)
+- [Redux](https://redux.js.org/)
+- [Bootstrap](https://getbootstrap.com/)
 - [Webpack](https://github.com/webpack/webpack)
 - [Frameless titlebar](https://github.com/Cristian006/frameless-titlebar)
+- [react-aria-offcanvas](https://github.com/neosiae/react-aria-offcanvas)
+- [react-toastify](https://github.com/fkhadra/react-toastify)
+- [Best README Template](https://github.com/othneildrew/Best-README-Template)
 
 <!-- GETTING STARTED -->
 
@@ -91,16 +96,44 @@ yarn start
 npm run make *not available*
 ```
 
+## Screenshots
+
+### Login page
+
+<p align="center">
+    <img src="resources/images/login.png" alt="Image no available...">
+</p>
+
+### Register page
+
+<p align="center">
+    <img src="resources/images/register.png" alt="Image no available...">
+</p>
+
+### Main page
+
+<p align="center">
+    <img src="resources/images/main.png"  alt="Image no available...">
+</p>
+
+### Account form
+
+<p align="center">
+    <img src="resources/images/form.png" alt="Image no available...">
+</p>
+
+### Notify
+
+<p align="center">
+    <img src="resources/images/notify.png" alt="Image no available...">
+</p>
+
 <!-- ROADMAP -->
 
 ## Roadmap
 
-See the [open issues](https://github.com/Arsero/acryptex_old/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/Arsero/acryptex/issues) for a list of proposed features (and known issues).
 
-- Replace the simple crypted file by a database (sqlite)
-- Refactor pattern components/containers
-- Refactor security (pages)
-- Add loading component
 - Add splash screen
 - Add OAuth to store file in dropbox / drive / ...
 
@@ -126,7 +159,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 
 [Arsero](https://github.com/Arsero) - azzedine.elb@outlook.com
 
-Project Link: [https://github.com/Arsero/acryptex_old](https://github.com/Arsero/acryptex_old)
+Project Link: [https://github.com/Arsero/acryptex](https://github.com/Arsero/acryptex)
 
 <!-- ACKNOWLEDGMENTS -->
 
@@ -134,6 +167,3 @@ Project Link: [https://github.com/Arsero/acryptex_old](https://github.com/Arsero
 
 - [HunteRoi](https://github.com/HunteRoi)
 - [Gservais](https://github.com/Gservais)
-- [Best README Template](https://github.com/othneildrew/Best-README-Template)
-
-[product-screenshot]: resources/images/screenshot.png

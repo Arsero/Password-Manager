@@ -1,33 +1,21 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { connect } from 'react-redux';
-import { Form, Container, Button } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import * as actions from '../../actions/actions';
+import { Form, Container, Button, Row, Col } from 'react-bootstrap';
+import { Notify } from '../../containers/notifications/Notification';
 import CryptUtils from '../../utils/CryptUtils';
 import Account from '../../models/account';
+import State from '../../models/state';
 import './styles.css';
 
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    AddAccount: (account: Account) =>
-      dispatch({ type: 'ADD_ACCOUNT', payload: account }),
-    UpdateAccount: (account: Account) =>
-      dispatch({ type: 'UPD_ACCOUNT', payload: account }),
-    SetSelectedAccount: (account: Account) =>
-      dispatch({ type: 'SELECT_ACCOUNT', payload: account }),
-  };
-};
-
-const mapStateToProps = (state: any) => {
-  return { selectedAccount: state.selectedAccount };
-};
-
-const AccountForm = ({
-  selectedAccount,
-  AddAccount,
-  UpdateAccount,
-  SetSelectedAccount,
-}: any) => {
+const AccountForm = () => {
   const history = useHistory();
+  const selectedAccount: Account = useSelector(
+    (state: State) => state.selectedAccount
+  );
+  const dispatch = useDispatch();
+
   const initializeForm = () => {
     if (selectedAccount) return selectedAccount;
     else {
@@ -50,9 +38,11 @@ const AccountForm = ({
     }
 
     if (selectedAccount) {
-      UpdateAccount(account);
+      dispatch(actions.UpdateAccount(account));
+      Notify('✔️ Account updated !');
     } else {
-      AddAccount(account);
+      dispatch(actions.AddAccount(account));
+      Notify('✔️ Account added !');
     }
 
     event.preventDefault();
@@ -68,7 +58,7 @@ const AccountForm = ({
   };
 
   return (
-    <Container style={{ marginTop: '5em' }}>
+    <Container style={{ marginTop: '5em', width: '70%', maxWidth: '800px' }}>
       <Form onSubmit={handleSubmit}>
         <Form.Group controlId='website'>
           <Form.Label>Website</Form.Label>
@@ -102,28 +92,33 @@ const AccountForm = ({
         </Form.Group>
         <Form.Group controlId='password'>
           <Form.Label>Password</Form.Label>
-          <Form.Control
-            type='password'
-            name='password'
-            placeholder='Enter a password'
-            onChange={handleInputChange}
-            value={account.password}
-          />
+          <Row>
+            <Col>
+              <Form.Control
+                type='password'
+                name='password'
+                placeholder='Enter a password'
+                onChange={handleInputChange}
+                value={account.password}
+              />
+            </Col>
+            <Col>
+              <Button
+                type='button'
+                variant='outline-dark'
+                block
+                onClick={() => {
+                  setAccount({
+                    ...account,
+                    password: CryptUtils.generatePassword(8),
+                  });
+                }}
+              >
+                Generate password
+              </Button>
+            </Col>
+          </Row>
         </Form.Group>
-        <Button
-          type='button'
-          variant='outline-primary'
-          block
-          style={{ marginBottom: '15px' }}
-          onClick={() => {
-            setAccount({
-              ...account,
-              password: CryptUtils.generatePassword(8),
-            });
-          }}
-        >
-          Generate password
-        </Button>
         <Form.Group controlId='comment'>
           <Form.Label>Comment</Form.Label>
           <Form.Control
@@ -135,33 +130,38 @@ const AccountForm = ({
             value={account.comment}
           />
         </Form.Group>
-        <Button
-          type='submit'
-          variant='dark'
-          style={{ margin: '25px auto' }}
-          block
-        >
-          Submit
-        </Button>
-        <Button
-          variant='danger'
-          type='button'
-          block
-          onClick={(event) => {
-            SetSelectedAccount(null);
+        <Row style={{ marginTop: '30px' }}>
+          <Col>
+            <Button type='submit' variant='dark' block>
+              {selectedAccount ? (
+                <span>Edit account</span>
+              ) : (
+                <span>Add account</span>
+              )}
+            </Button>
+          </Col>
+          <Col>
+            <Button
+              variant='outline-danger'
+              type='button'
+              block
+              onClick={(event) => {
+                dispatch(actions.SelectAccount(null));
 
-            event.preventDefault();
-            const location = {
-              pathname: '/',
-            };
-            history.push(location);
-          }}
-        >
-          Cancel
-        </Button>
+                event.preventDefault();
+                const location = {
+                  pathname: '/',
+                };
+                history.push(location);
+              }}
+            >
+              Cancel
+            </Button>
+          </Col>
+        </Row>
       </Form>
     </Container>
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(AccountForm);
+export default AccountForm;

@@ -1,24 +1,20 @@
 import React, { useState } from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Form, Button, Alert } from 'react-bootstrap';
 import { useHistory } from 'react-router-dom';
+import { PersonPlusFill } from 'react-bootstrap-icons';
+import State from '../../models/state';
+import { Notify } from '../../containers/notifications/Notification';
+import * as actions from '../../actions/actions';
 import './styles.css';
 
-const mapStateToProps = (state: any) => {
-  return { isLogged: state.isLogged };
-};
-
-const mapDispatchToProps = (dispatch: any) => {
-  return {
-    register: (secret: string) =>
-      dispatch({ type: 'REGISTER', payload: secret }),
-  };
-};
-
-const Register = ({ register, isLogged }: any) => {
+const Register = () => {
   const history = useHistory();
+  const isLogged = useSelector((state: State) => state.isLogged);
+  const dispatch = useDispatch();
   const [secret, setSecret] = useState('');
   const [badPassword, setBadPassword] = useState(false);
+
   const handleInputChange = (event: any) => {
     setSecret(event.currentTarget.value);
   };
@@ -27,13 +23,16 @@ const Register = ({ register, isLogged }: any) => {
     event.preventDefault();
     if (secret.length > 0) {
       const isWasLogged = isLogged;
-      register(secret);
+      dispatch(actions.Register(secret));
 
       if (isWasLogged) {
+        Notify('✔️ Secret updated !');
         const location = {
           pathname: '/',
         };
         history.push(location);
+      } else {
+        Notify('✔️ Secret saved !');
       }
     } else {
       setBadPassword(true);
@@ -42,7 +41,15 @@ const Register = ({ register, isLogged }: any) => {
   return (
     <Form onSubmit={handleSubmitLogin} className='form-center'>
       <Form.Group controlId='password'>
-        <Form.Label>Register</Form.Label>
+        <div
+          style={{
+            margin: '0 auto',
+            marginBottom: '25%',
+            textAlign: 'center',
+          }}
+        >
+          <PersonPlusFill size={120} />
+        </div>
         <Form.Control
           type='password'
           placeholder='Enter your password'
@@ -69,4 +76,4 @@ const Register = ({ register, isLogged }: any) => {
   );
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Register);
+export default Register;

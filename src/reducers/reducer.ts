@@ -1,15 +1,7 @@
-import { SetSelectedAccount } from './../actions/actions';
 import * as actions from '../actions/actions';
 import ServiceAccount from '../db/ServiceAccount';
 import Account from '../models/account';
-
-interface State {
-  secret: string;
-  serviceAccount: ServiceAccount;
-  accounts: Account[];
-  isLogged: boolean;
-  selectedAccount: Account;
-}
+import State from '../models/state';
 
 const initialState: State = {
   secret: '',
@@ -19,7 +11,8 @@ const initialState: State = {
   selectedAccount: null,
 };
 
-const update = (state, mutations) => Object.assign({}, state, mutations);
+const update = (state: State, mutations: any) =>
+  Object.assign({}, state, mutations);
 
 const reducer = (state: State = initialState, action: any) => {
   const serviceAccount = state.serviceAccount;

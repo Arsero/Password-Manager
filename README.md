@@ -100,7 +100,7 @@ npm run make *not available*
 
 ### Login page
 
-<p align="center">
+<p align="center" style="border: 2px solid black">
     <img src="resources/images/login.png" alt="Image no available..." border="2">
 </p>
 

@@ -7,4 +7,5 @@ export default interface State {
   accounts: Account[];
   isLogged: boolean;
   selectedAccount: Account;
+  isDataExists: boolean;
 }

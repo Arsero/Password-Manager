@@ -9,6 +9,7 @@ const initialState: State = {
   accounts: [],
   isLogged: false,
   selectedAccount: null,
+  isDataExists: new ServiceAccount().DataExist(),
 };
 
 const update = (state: State, mutations: any) =>

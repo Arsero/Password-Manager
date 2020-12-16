@@ -130,7 +130,7 @@ const AccountForm = () => {
             value={account.comment}
           />
         </Form.Group>
-        <Row style={{ marginTop: '15px' }}>
+        <Row style={{ marginTop: '30px' }}>
           <Col>
             <Button type='submit' variant='dark' block>
               {selectedAccount ? (
@@ -146,7 +146,7 @@ const AccountForm = () => {
               type='button'
               block
               onClick={(event) => {
-                dispatch(actions.SetSelectedAccount(null));
+                dispatch(actions.SelectAccount(null));
 
                 event.preventDefault();
                 const location = {

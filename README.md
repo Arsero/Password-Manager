@@ -113,7 +113,7 @@ npm run make *not available*
 ### Main page
 
 <p align="center">
-    <img src="resources/images/main-page.png" style="border: 2px solid black" alt="Image no available...">
+    <img src="resources/images/main.png" style="border: 2px solid black" alt="Image no available...">
 </p>
 
 ### Account form

@@ -4,6 +4,7 @@ import Account from '../models/account';
 import State from '../models/state';
 
 const initialState: State = {
+  email: '',
   secret: '',
   serviceAccount: new ServiceAccount(),
   accounts: [],
@@ -24,8 +25,13 @@ const reducer = (state: State = initialState, action: any) => {
       let isLogged;
 
       try {
-        serviceAccount.secret = action.payload;
-        accounts = serviceAccount.Load(action.payload);
+        serviceAccount.secret = action.payload.secret;
+        serviceAccount.email = action.payload.email;
+        accounts = serviceAccount.Load(
+          action.payload.email,
+          action.payload.secret
+        );
+
         isLogged = true;
       } catch (error) {
         accounts = [];
@@ -34,20 +40,23 @@ const reducer = (state: State = initialState, action: any) => {
 
       state = update(state, {
         isLogged: isLogged,
-        secret: action.payload,
+        email: action.payload.email,
+        secret: action.payload.secret,
         accounts: accounts,
       });
 
       break;
 
     case actions.REGISTER:
-      serviceAccount.secret = action.payload;
+      serviceAccount.email = action.payload.email;
+      serviceAccount.secret = action.payload.secret;
       serviceAccount.Commit();
 
       state = update(state, {
         ...state,
         isLogged: true,
-        secret: action.payload,
+        email: action.payload.email,
+        secret: action.payload.secret,
       });
 
       break;

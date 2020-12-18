@@ -20,7 +20,7 @@
   "config": {
     "forge": {
       "packagerConfig": {
-        "icon": "icons/shield.icns"
+        "icon": "resources/icons/shield.icns"
       },
       "makers": [
         {

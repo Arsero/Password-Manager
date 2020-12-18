@@ -12,35 +12,42 @@ const Register = () => {
   const history = useHistory();
   const isLogged = useSelector((state: State) => state.isLogged);
   const dispatch = useDispatch();
-  const [secret, setSecret] = useState('');
-  const [badPassword, setBadPassword] = useState(false);
+  const [email, setEmail] = useState<string>('');
+  const [secret, setSecret] = useState<string>('');
+  const [badPassword, setBadPassword] = useState<boolean>(false);
 
   const handleInputChange = (event: any) => {
-    setSecret(event.currentTarget.value);
+    const { name, value } = event.currentTarget;
+    if (name === 'email') {
+      setEmail(value);
+    } else {
+      setSecret(value);
+    }
   };
 
   const handleSubmitLogin = (event: any) => {
     event.preventDefault();
-    if (secret.length > 0) {
+    if (email.length > 0 && secret.length > 0) {
       const isWasLogged = isLogged;
-      dispatch(actions.Register(secret));
+      dispatch(actions.Register(email, secret));
 
       if (isWasLogged) {
-        Notify('✔️ Secret updated !');
+        Notify('✔️ Main account updated !');
         const location = {
           pathname: '/',
         };
         history.push(location);
       } else {
-        Notify('✔️ Secret saved !');
+        Notify('✔️ Main account saved !');
       }
     } else {
       setBadPassword(true);
     }
   };
+
   return (
     <Form onSubmit={handleSubmitLogin} className='form-center'>
-      <Form.Group controlId='password'>
+      <Form.Group controlId='logo'>
         <div
           style={{
             margin: '0 auto',
@@ -50,18 +57,33 @@ const Register = () => {
         >
           <PersonPlusFill size={120} />
         </div>
+      </Form.Group>
+      <Form.Group controlId='email'>
+        <Form.Label>Email address</Form.Label>
+        <Form.Control
+          type='email'
+          name='email'
+          placeholder='Enter your email'
+          onChange={handleInputChange}
+          value={email}
+          required
+        />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Password</Form.Label>
         <Form.Control
           type='password'
           placeholder='Enter your password'
           onChange={handleInputChange}
           value={secret}
+          required
         />
         {badPassword && (
           <Alert
             variant='danger'
             style={{ marginTop: '10px', marginBottom: '10px' }}
           >
-            The password can't be empty !
+            The email address or the password can't be empty !
           </Alert>
         )}
       </Form.Group>

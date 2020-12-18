@@ -1,18 +1,26 @@
 import CryptUtils from '../utils/CryptUtils';
 import FileUtils from '../utils/FileUtils';
 
-export const SaveDB = (data: any, pathfile: string, secret: string) => {
+export const SaveDB = (
+  data: any,
+  pathfile: string,
+  email: string,
+  secret: string
+) => {
   const cryptedData = CryptUtils.encrypt(
     JSON.stringify(data),
-    CryptUtils.hash(secret)
+    CryptUtils.hashWithSalt(email, secret)
   );
 
   FileUtils.saveData(pathfile, cryptedData.toString());
 };
 
-export const LoadDB = (pathfile: string, secret: string) => {
+export const LoadDB = (pathfile: string, email: string, secret: string) => {
   let cryptedData = FileUtils.loadData(pathfile);
-  const data = CryptUtils.decrypt(cryptedData, CryptUtils.hash(secret));
+  const data = CryptUtils.decrypt(
+    cryptedData,
+    CryptUtils.hashWithSalt(email, secret)
+  );
   // exception if bad secret
   return JSON.parse(data);
 };

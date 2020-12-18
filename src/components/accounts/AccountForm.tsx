@@ -114,7 +114,7 @@ const AccountForm = () => {
                 onClick={() => {
                   setAccount({
                     ...account,
-                    password: CryptUtils.generatePassword(8),
+                    password: CryptUtils.generatePassword(10),
                   });
                 }}
               >

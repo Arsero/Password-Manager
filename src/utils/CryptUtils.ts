@@ -1,17 +1,17 @@
 import {
   encryptSeed,
   decryptSeed,
-  sha256,
-  stringToBytes
-} from "@waves/ts-lib-crypto";
+  blake2b,
+  stringToBytes,
+} from '@waves/ts-lib-crypto';
 
 export default class CryptUtils {
   static characters =
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@$!%*?&";
+    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@$!%*?&';
   static charactersLength = CryptUtils.characters.length;
 
   static reg = new RegExp(
-    "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,}$"
+    '^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@$!%*?&])[A-Za-z0-9@$!%*?&]{8,}$'
   );
 
   static encrypt = (text: string, key: string) => {
@@ -23,20 +23,24 @@ export default class CryptUtils {
   };
 
   static hash = (text: string) => {
-    return sha256(stringToBytes(text)).toString();
+    return blake2b(stringToBytes(text)).toString();
+  };
+
+  static hashWithSalt = (text: string, salt: string) => {
+    let bytes = stringToBytes(text + text.length + salt + salt.length);
+    return blake2b(bytes).toString();
   };
 
   static generatePassword = (lenght: number) => {
     let result;
 
     do {
-      result = "";
+      result = '';
       for (let i = 0; i < lenght; i++) {
         result += CryptUtils.characters.charAt(
           Math.floor(Math.random() * CryptUtils.charactersLength)
         );
       }
-      console.log(result);
     } while (!CryptUtils.reg.test(result));
 
     return result;

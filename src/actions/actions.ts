@@ -8,11 +8,14 @@ export const DEL_ACCOUNT = 'DEL_ACCOUNT';
 export const SELECT_ACCOUNT = 'SELECT_ACCOUNT';
 export const COPY_PWD = 'COPY_PWD';
 
-export const Login = (secret: string) => ({ type: LOGIN, payload: secret });
+export const Login = (email: string, secret: string) => ({
+  type: LOGIN,
+  payload: { email, secret },
+});
 
-export const Register = (secret: string) => ({
+export const Register = (email: string, secret: string) => ({
   type: REGISTER,
-  payload: secret,
+  payload: { email, secret },
 });
 
 export const AddAccount = (account: Account) => ({

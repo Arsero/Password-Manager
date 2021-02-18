@@ -30,16 +30,16 @@
 
 ## Table of Contents
 
-- [About the Project](#about-the-project)
-  - [Built With](#built-with)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-- [Screenshots](#screenshots)
-- [Roadmap](#roadmap)
-- [Contributing](#contributing)
-- [License](#license)
-- [Contact](#contact)
+-   [About the Project](#about-the-project)
+    -   [Built With](#built-with)
+-   [Getting Started](#getting-started)
+    -   [Prerequisites](#prerequisites)
+    -   [Installation](#installation)
+-   [Screenshots](#screenshots)
+-   [Roadmap](#roadmap)
+-   [Contributing](#contributing)
+-   [License](#license)
+-   [Contact](#contact)
 
 ## About The Project
 
@@ -47,18 +47,17 @@ This is a password manager. Store your accounts information into a crypted local
 
 ### Built with
 
-- [Electron](https://www.electronjs.org/)
-- [Electron-forge](https://github.com/electron-userland/electron-forge)
-- [Node](https://nodejs.org/en/about/)
-- [React](https://github.com/facebook/react)
-- [Typescript](https://www.typescriptlang.org/)
-- [Redux](https://redux.js.org/)
-- [Bootstrap](https://getbootstrap.com/)
-- [Webpack](https://github.com/webpack/webpack)
-- [Frameless titlebar](https://github.com/Cristian006/frameless-titlebar)
-- [react-aria-offcanvas](https://github.com/neosiae/react-aria-offcanvas)
-- [react-toastify](https://github.com/fkhadra/react-toastify)
-- [Best README Template](https://github.com/othneildrew/Best-README-Template)
+-   [Electron](https://www.electronjs.org/)
+-   [Electron-forge](https://github.com/electron-userland/electron-forge)
+-   [Node](https://nodejs.org/en/about/)
+-   [React](https://github.com/facebook/react)
+-   [Typescript](https://www.typescriptlang.org/)
+-   [Redux](https://redux.js.org/)
+-   [Bootstrap](https://getbootstrap.com/)
+-   [Webpack](https://github.com/webpack/webpack)
+-   [react-aria-offcanvas](https://github.com/neosiae/react-aria-offcanvas)
+-   [react-toastify](https://github.com/fkhadra/react-toastify)
+-   [Best README Template](https://github.com/othneildrew/Best-README-Template)
 
 <!-- GETTING STARTED -->
 
@@ -93,7 +92,7 @@ yarn start
 4. Build an installer (see the out folder)
 
 ```sh
-npm run make *not available*
+yarn make
 ```
 
 ## Screenshots
@@ -134,8 +133,8 @@ npm run make *not available*
 
 See the [open issues](https://github.com/Arsero/acryptex/issues) for a list of proposed features (and known issues).
 
-- Add splash screen
-- Add OAuth to store file in dropbox / drive / ...
+-   Add splash screen
+-   Add OAuth to store file in dropbox / drive / ...
 
 <!-- CONTRIBUTING -->
 
@@ -165,5 +164,5 @@ Project Link: [https://github.com/Arsero/acryptex](https://github.com/Arsero/acr
 
 ## Acknowledgments
 
-- [HunteRoi](https://github.com/HunteRoi)
-- [Gservais](https://github.com/Gservais)
+-   [HunteRoi](https://github.com/HunteRoi)
+-   [Gservais](https://github.com/Gservais)

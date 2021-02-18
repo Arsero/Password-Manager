@@ -1,105 +1,104 @@
 {
-  "name": "acryptex",
-  "productName": "acryptex",
-  "version": "2.0.0",
-  "description": "A password manager",
-  "main": ".webpack/main",
-  "types": "dist/index.d.ts",
-  "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish"
-  },
-  "keywords": [],
-  "author": {
-    "name": "Arsero",
-    "email": "54241944+Arsero@users.noreply.github.com"
-  },
-  "license": "MIT",
-  "config": {
-    "forge": {
-      "packagerConfig": {
-        "icon": "resources/icons/shield.icns"
-      },
-      "makers": [
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb"
-        },
-        {
-          "name": "@electron-forge/maker-rpm"
-        }
-      ],
-      "plugins": [
-        [
-          "@electron-forge/plugin-webpack",
-          {
-            "mainConfig": "./config/webpack.main.config.js",
-            "renderer": {
-              "config": "./config/webpack.renderer.config.js",
-              "entryPoints": [
-                {
-                  "html": "./src/index.html",
-                  "js": "./src/renderer.tsx",
-                  "name": "main_window"
-                }
-              ]
-            }
-          }
-        ]
-      ]
-    }
-  },
-  "devDependencies": {
-    "@electron-forge/cli": "^6.0.0-beta.50",
-    "@electron-forge/maker-deb": "^6.0.0-beta.50",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.50",
-    "@electron-forge/maker-squirrel": "^6.0.0-beta.50",
-    "@electron-forge/maker-zip": "^6.0.0-beta.50",
-    "@electron-forge/plugin-webpack": "^6.0.0-beta.50",
-    "@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
-    "@types/react-redux": "^7.1.12",
-    "css-loader": "^5.0.1",
-    "electron": "^11.1.0",
-    "electron-rebuild": "^2.3.4",
-    "file-loader": "^6.0.0",
-    "node-loader": "^1.0.2",
-    "prettier": "^2.2.1",
-    "redux-devtools": "^3.5.0",
-    "style-loader": "^2.0.0",
-    "typescript": "^4.1.3"
-  },
-  "dependencies": {
-    "@types/react": "^17.0.0",
-    "@types/react-dom": "^17.0.0",
-    "@types/uuid": "^8.3.0",
-    "@waves/ts-lib-crypto": "^1.4.3",
-    "bootstrap": "^4.4.1",
-    "electron-squirrel-startup": "^1.0.0",
-    "fork-ts-checker-webpack-plugin": "^6.0.6",
-    "frameless-titlebar": "^2.1.4",
-    "react": "^17.0.1",
-    "react-aria-offcanvas": "^1.4.2",
-    "react-bootstrap": "^1.0.0-beta.17",
-    "react-bootstrap-icons": "^1.1.0",
-    "react-dom": "^17.0.1",
-    "react-hot-loader": "^4.13.0",
-    "react-redux": "^7.2.0",
-    "react-router-dom": "^5.1.2",
-    "react-toastify": "^6.2.0",
-    "redux": "^4.0.5",
-    "redux-devtools-extension": "^2.13.8",
-    "ts-loader": "^8.0.12",
-    "uuid": "^8.3.2"
-  }
+	"name": "acryptex",
+	"productName": "acryptex",
+	"version": "2.0.0",
+	"description": "A password manager",
+	"main": ".webpack/main",
+	"types": "dist/index.d.ts",
+	"scripts": {
+		"start": "electron-forge start",
+		"package": "electron-forge package",
+		"make": "electron-forge make",
+		"publish": "electron-forge publish"
+	},
+	"keywords": [],
+	"author": {
+		"name": "Arsero",
+		"email": "54241944+Arsero@users.noreply.github.com"
+	},
+	"license": "MIT",
+	"config": {
+		"forge": {
+			"packagerConfig": {
+				"icon": "resources/icons/shield.icns"
+			},
+			"makers": [
+				{
+					"name": "@electron-forge/maker-squirrel",
+					"config": {}
+				},
+				{
+					"name": "@electron-forge/maker-zip",
+					"platforms": [
+						"darwin"
+					]
+				},
+				{
+					"name": "@electron-forge/maker-deb"
+				},
+				{
+					"name": "@electron-forge/maker-rpm"
+				}
+			],
+			"plugins": [
+				[
+					"@electron-forge/plugin-webpack",
+					{
+						"mainConfig": "./config/webpack.main.config.js",
+						"renderer": {
+							"config": "./config/webpack.renderer.config.js",
+							"entryPoints": [
+								{
+									"html": "./src/index.html",
+									"js": "./src/renderer.tsx",
+									"name": "main_window"
+								}
+							]
+						}
+					}
+				]
+			]
+		}
+	},
+	"devDependencies": {
+		"@electron-forge/cli": "^6.0.0-beta.50",
+		"@electron-forge/maker-deb": "^6.0.0-beta.50",
+		"@electron-forge/maker-rpm": "^6.0.0-beta.50",
+		"@electron-forge/maker-squirrel": "^6.0.0-beta.50",
+		"@electron-forge/maker-zip": "^6.0.0-beta.50",
+		"@electron-forge/plugin-webpack": "^6.0.0-beta.50",
+		"@marshallofsound/webpack-asset-relocator-loader": "^0.5.0",
+		"@types/react-redux": "^7.1.12",
+		"css-loader": "^5.0.1",
+		"electron": "^11.1.0",
+		"electron-rebuild": "^2.3.4",
+		"file-loader": "^6.0.0",
+		"node-loader": "^1.0.2",
+		"prettier": "^2.2.1",
+		"redux-devtools": "^3.5.0",
+		"style-loader": "^2.0.0",
+		"typescript": "^4.1.3"
+	},
+	"dependencies": {
+		"@types/react": "^17.0.0",
+		"@types/react-dom": "^17.0.0",
+		"@types/uuid": "^8.3.0",
+		"@waves/ts-lib-crypto": "^1.4.3",
+		"bootstrap": "^4.4.1",
+		"electron-squirrel-startup": "^1.0.0",
+		"fork-ts-checker-webpack-plugin": "^6.0.6",
+		"react": "^17.0.1",
+		"react-aria-offcanvas": "^1.4.2",
+		"react-bootstrap": "^1.0.0-beta.17",
+		"react-bootstrap-icons": "^1.1.0",
+		"react-dom": "^17.0.1",
+		"react-hot-loader": "^4.13.0",
+		"react-redux": "^7.2.0",
+		"react-router-dom": "^5.1.2",
+		"react-toastify": "^6.2.0",
+		"redux": "^4.0.5",
+		"redux-devtools-extension": "^2.13.8",
+		"ts-loader": "^8.0.12",
+		"uuid": "^8.3.2"
+	}
 }

@@ -9,29 +9,29 @@ import { Notify } from '../containers/notifications/Notification';
 import State from '../models/state';
 
 const AuthenticatedApp = () => {
-  const accounts = useSelector((state: State) => state.accounts);
+	const accounts = useSelector((state: State) => state.accounts);
 
-  useEffect(() => {
-    Notify('✔️ Connected !');
-  });
+	useEffect(() => {
+		Notify('✔️ Connected !');
+	}, []);
 
-  return (
-    <div>
-      <Route
-        exact
-        path='/'
-        render={() => (
-          <div>
-            <Menu />
-            <AccountList accounts={accounts} />
-          </div>
-        )}
-      />
+	return (
+		<div>
+			<Route
+				exact
+				path='/'
+				render={() => (
+					<div>
+						<Menu />
+						<AccountList accounts={accounts} />
+					</div>
+				)}
+			/>
 
-      <Route path='/secret' render={() => <Register />} />
-      <Route path={'/account'} render={() => <AccountForm />} />
-    </div>
-  );
+			<Route path='/secret' render={() => <Register />} />
+			<Route path={'/account'} render={() => <AccountForm />} />
+		</div>
+	);
 };
 
 export default AuthenticatedApp;

@@ -7,5 +7,6 @@ export const preferences = {
 		nodeIntegration: true,
 		nodeIntegrationInWorker: true,
 		enableRemoteModule: true,
+		contextIsolation: false,
 	},
 };
